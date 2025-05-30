@@ -37,12 +37,61 @@
     <!-- Section 3 -->
     <section class="bg-white p-6 rounded-lg shadow">
       <h2 class="text-2xl font-semibold mb-4">🔄 API Design Lifecycle</h2>
-      <p>
-        The API development lifecycle mirrors that of other products, starting with design based on functional and
-        non-functional requirements. Developers expect APIs to be simple, helpful, and easy to adopt, necessitating a
-        thoughtful design process.
+      <p class="mb-8">
+        The API development lifecycle follows a cyclic process, beginning from requirements, through design,
+        implementation, deployment, usage, analysis, and updates—ensuring continual improvement.
       </p>
+      <div class="flex justify-center">
+        <svg width="400" height="410" viewBox="0 0 400 410">
+          <!-- Circles -->
+          <circle cx="200" cy="50" r="32" fill="#6366f1" />
+          <circle cx="350" cy="120" r="32" fill="#818cf8" />
+          <circle cx="350" cy="250" r="32" fill="#38bdf8" />
+          <circle cx="200" cy="360" r="32" fill="#34d399" />
+          <circle cx="50" cy="250" r="32" fill="#fbbf24" />
+          <circle cx="50" cy="120" r="32" fill="#f87171" />
+          <circle cx="200" cy="200" r="32" fill="#f59e42" />
+
+          <!-- Labels -->
+          <text x="200" y="55" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Design</text>
+          <text x="350" y="125" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Update</text>
+          <text x="350" y="255" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Analyze</text>
+          <text x="200" y="365" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Use</text>
+          <text x="50" y="255" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Publish</text>
+          <text x="50" y="125" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Deploy</text>
+          <text x="200" y="205" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Develop</text>
+
+          <!-- Arrows (circular) -->
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"
+              markerUnits="strokeWidth">
+              <path d="M2,2 L2,6 L6,4 Z" fill="#374151" />
+            </marker>
+          </defs>
+          <!-- Design -> Develop -->
+          <line x1="200" y1="82" x2="200" y2="168" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+          <!-- Develop -> Deploy -->
+          <line x1="176" y1="226" x2="74" y2="148" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+          <!-- Deploy -> Publish -->
+          <line x1="54" y1="152" x2="54" y2="218" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+          <!-- Publish -> Use -->
+          <line x1="74" y1="272" x2="176" y2="334" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+          <!-- Use -> Analyze -->
+          <line x1="223" y1="334" x2="327" y2="272" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+          <!-- Analyze -> Update -->
+          <line x1="349" y1="218" x2="349" y2="152" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+          <!-- Update -> Design -->
+          <line x1="327" y1="148" x2="223" y2="82" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+          <!-- Requirements box + arrow -->
+          <rect x="155" y="8" width="90" height="25" rx="6" fill="#3b82f6" />
+          <text x="200" y="25" text-anchor="middle" fill="white" font-size="14">Requirements</text>
+          <line x1="200" y1="33" x2="200" y2="50" stroke="#3b82f6" stroke-width="3" marker-end="url(#arrow)" />
+        </svg>
+      </div>
+      <p class="text-center text-sm mt-3 text-gray-500">API Development Lifecycle</p>
     </section>
+
+
 
     <!-- Section 4 -->
     <section class="bg-white p-6 rounded-lg shadow">
