@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Design Summary</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🔌 API Design Summary</h1>
+  </header>
+
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">📘 What is an API?</h2>
+      <p>An API (Application Programming Interface) is an intermediary that allows two software components to communicate and share data. It acts as a contract between a client and a server, enabling applications to request services without needing to understand the underlying implementation.</p>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🧭 API Design Lifecycle</h2>
+      <p>Effective API design involves several key stages:</p>
+      <ul class="list-disc list-inside">
+        <li><strong>Requirements Gathering:</strong> Define both functional and non-functional requirements.</li>
+        <li><strong>Design Considerations:</strong> Choose appropriate architectural styles, data formats, and protocols.</li>
+        <li><strong>API Modeling:</strong> Structure resources and endpoints logically.</li>
+        <li><strong>Evaluation:</strong> Assess performance metrics and ensure scalability.</li>
+        <li><strong>Latency Budgeting:</strong> Allocate acceptable response times for API calls.</li>
+      </ul>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🔁 RESTful API Principles</h2>
+      <p>REST (Representational State Transfer) is a widely adopted architectural style for APIs, emphasizing:</p>
+      <ul class="list-disc list-inside">
+        <li><strong>Statelessness:</strong> Each request contains all necessary information.</li>
+        <li><strong>Client-Server Separation:</strong> Decouples user interface concerns from data storage.</li>
+        <li><strong>Uniform Interface:</strong> Standardized methods (GET, POST, PUT, DELETE) for resource manipulation.</li>
+        <li><strong>Resource-Based:</strong> Interactions are centered around resources identified by URIs.</li>
+      </ul>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🧠 REDCAMEL Framework</h2>
+      <p>The REDCAMEL approach provides a structured methodology for API design:</p>
+      <ul class="list-disc list-inside">
+        <li><strong>RE:</strong> Requirements</li>
+        <li><strong>DC:</strong> Design Considerations</li>
+        <li><strong>AM:</strong> API Modeling</li>
+        <li><strong>EL:</strong> Evaluation and Latency Budgeting</li>
+      </ul>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🚀 Senior/Lead Considerations</h2>
+      <p>For senior or lead developers, additional focus areas include:</p>
+      <ul class="list-disc list-inside">
+        <li><strong>Security:</strong> Implement authentication, authorization, and data protection measures.</li>
+        <li><strong>Scalability:</strong> Design APIs to handle increasing loads efficiently.</li>
+        <li><strong>Versioning:</strong> Manage changes without disrupting existing clients.</li>
+        <li><strong>Documentation:</strong> Provide clear and comprehensive API documentation.</li>
+        <li><strong>Monitoring:</strong> Set up logging and monitoring to track API performance and issues.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+</body>
+</html>
