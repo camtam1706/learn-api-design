@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>REST Web Architecture Style - API Design</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🌐 REST Web Architecture Style</h1>
+  </header>
+
+  <!-- Main content -->
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Section 1: Introduction -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <span class="mr-3">🔍</span>Introduction to REST
+      </h2>
+      <p>
+        REST (Representational State Transfer) is an architectural style for designing networked applications,
+        especially web services. It relies on a stateless, client-server communication protocol — typically HTTP.
+        RESTful APIs use standard HTTP methods and URI patterns to manipulate resources and represent their state.
+      </p>
+      <p class="mt-2">
+        Roy Fielding introduced REST in his 2000 doctoral dissertation, describing it as an abstraction of the Web’s
+        architectural principles, emphasizing scalability, simplicity, and performance.
+      </p>
+    </section>
+
+    <!-- Section 2: REST Architectural Constraints -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <span class="mr-3">📐</span>REST Architectural Constraints
+      </h2>
+      <p>
+        REST imposes six key constraints that shape its design:
+      </p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Client-Server:</strong> Separation of concerns improves portability and scalability.</li>
+        <li><strong>Stateless:</strong> Each request from client to server must contain all information needed to
+          process it.</li>
+        <li><strong>Cacheable:</strong> Responses must define themselves as cacheable or not to improve client
+          efficiency.</li>
+        <li><strong>Uniform Interface:</strong> Standardized way to interact with resources, simplifying architecture.
+        </li>
+        <li><strong>Layered System:</strong> System composed of hierarchical layers to enhance scalability and security.
+        </li>
+        <li><strong>Code on Demand (optional):</strong> Servers can extend client functionality by sending executable
+          code.</li>
+      </ul>
+    </section>
+
+    <!-- Section 3: Core Principles of REST -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <span class="mr-3">⚙️</span>Core Principles of REST
+      </h2>
+      <p>
+        RESTful design revolves around resources, identified by URIs. The state of these resources is represented and
+        transferred via representations (usually JSON or XML).
+      </p>
+      <p class="mt-2">
+        Interaction with resources uses standard HTTP methods:
+      </p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>GET:</strong> Retrieve resource representation without side effects.</li>
+        <li><strong>POST:</strong> Create subordinate resources or submit data for processing.</li>
+        <li><strong>PUT:</strong> Replace or create resource at a specified URI.</li>
+        <li><strong>PATCH:</strong> Partially update a resource.</li>
+        <li><strong>DELETE:</strong> Remove a resource.</li>
+      </ul>
+      <p class="mt-2">
+        Self-descriptive messages and hypermedia (HATEOAS) guide clients dynamically through application states by
+        providing relevant links.
+      </p>
+    </section>
+
+    <!-- Section 4: Benefits of REST -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <span class="mr-3">🚀</span>Benefits of RESTful Architecture
+      </h2>
+      <ul class="list-disc list-inside space-y-1">
+        <li><strong>Scalability:</strong> Statelessness allows easy scaling of servers.</li>
+        <li><strong>Performance:</strong> Caching improves response times and reduces server load.</li>
+        <li><strong>Flexibility:</strong> Clients and servers can evolve independently.</li>
+        <li><strong>Simplicity:</strong> Use of HTTP and URIs lowers barrier to adoption.</li>
+        <li><strong>Interoperability:</strong> Standard protocols and formats enable diverse clients.</li>
+      </ul>
+    </section>
+
+    <!-- Section 5: Common RESTful API Design Practices -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <span class="mr-3">🛠️</span>Common RESTful API Design Practices
+      </h2>
+      <ul class="list-disc list-inside space-y-1">
+        <li><strong>Use nouns for resources:</strong> URIs represent objects or collections, e.g.,
+          <code>/users/123</code>.
+        </li>
+        <li><strong>Use HTTP methods properly:</strong> GET for read, POST for create, PUT/PATCH for update, DELETE for
+          delete.</li>
+        <li><strong>Stateless communication:</strong> Do not store client context on the server between requests.</li>
+        <li><strong>Use appropriate HTTP status codes:</strong> 200 OK, 201 Created, 404 Not Found, 400 Bad Request,
+          etc.</li>
+        <li><strong>Support filtering, pagination, sorting:</strong> Via query parameters.</li>
+        <li><strong>Provide hypermedia links:</strong> Use HATEOAS to improve discoverability.</li>
+        <li><strong>Version your API:</strong> Via URL path (e.g., /v1/users) or headers.</li>
+      </ul>
+    </section>
+
+    <!-- Section 6: Common Challenges -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <span class="mr-3">⚠️</span>Common Challenges with REST APIs
+      </h2>
+      <ul class="list-disc list-inside space-y-1">
+        <li>Over-fetching or under-fetching data due to fixed resource representations.</li>
+        <li>Handling complex transactions and operations that don’t map well to CRUD.</li>
+        <li>Ensuring proper security with stateless design.</li>
+        <li>Managing API versioning without breaking clients.</li>
+        <li>Implementing HATEOAS effectively can be complex and often neglected.</li>
+      </ul>
+    </section>
+
+    <!-- Section 7: Senior/Lead Considerations -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <span class="mr-3">🎯</span>Senior/Lead Needs to Focus On
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Architectural decisions:</strong> Define when to apply REST and when to mix with other styles
+          (GraphQL, gRPC).</li>
+        <li><strong>API consistency:</strong> Enforce design standards and conventions across teams for uniformity.</li>
+        <li><strong>Scalability & performance:</strong> Guide caching strategies, rate limiting, and load balancing.
+        </li>
+        <li><strong>Security:</strong> Oversee authentication, authorization, and data protection mechanisms.</li>
+        <li><strong>Documentation and discoverability:</strong> Ensure APIs are well documented with examples and
+          hypermedia support.</li>
+        <li><strong>Versioning strategy:</strong> Plan and communicate API version evolution to minimize client
+          disruption.</li>
+        <li><strong>Monitoring and analytics:</strong> Set up metrics and logging for usage, errors, and performance.
+        </li>
+        <li><strong>Team mentoring:</strong> Train developers on REST principles, pitfalls, and best practices.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
