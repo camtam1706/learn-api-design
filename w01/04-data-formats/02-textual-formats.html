@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Textual Data Formats - API Design Summary</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">📄 Textual Data Formats in API Design</h1>
+  </header>
+
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Section 1 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        📌 1. Introduction to Textual Data Formats
+      </h2>
+      <p>
+        Textual data formats are widely used for data representation and communication between APIs. Their
+        human-readable nature
+        makes them easy to debug, develop, and integrate. Choosing the right format affects performance,
+        interoperability, and ease of use.
+      </p>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        🔢 2. Common Textual Data Formats
+      </h2>
+      <ol class="list-decimal list-inside space-y-2">
+        <li>
+          <strong>JSON (JavaScript Object Notation)</strong>
+          <p class="mt-1">
+            Most popular format for API data exchange. It is lightweight, language-independent, easy to parse and
+            generate.
+            Supports hierarchical data with arrays and objects.
+          </p>
+        </li>
+        <li>
+          <strong>XML (Extensible Markup Language)</strong>
+          <p class="mt-1">
+            Verbose but flexible markup language with strong schema support and namespaces.
+            Common in older enterprise systems and SOAP APIs.
+          </p>
+        </li>
+        <li>
+          <strong>YAML (YAML Ain't Markup Language)</strong>
+          <p class="mt-1">
+            Designed for configuration and data serialization.
+            More readable and less verbose than XML.
+            Supports comments and complex data types.
+          </p>
+        </li>
+        <li>
+          <strong>CSV (Comma-Separated Values)</strong>
+          <p class="mt-1">
+            Simple format for tabular data.
+            Easy for spreadsheets and simple data dumps.
+            Lacks support for nested or hierarchical data.
+          </p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        ⚙️ 3. Format Characteristics and Tradeoffs
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>
+          <strong>Readability:</strong> YAML & JSON are generally easier to read than XML or CSV.
+        </li>
+        <li>
+          <strong>Schema & Validation:</strong> XML has extensive schema validation tools (XSD), JSON supports JSON
+          Schema.
+        </li>
+        <li>
+          <strong>Data Complexity:</strong> JSON and YAML handle complex nested structures; CSV is limited to flat
+          tables.
+        </li>
+        <li>
+          <strong>Size & Performance:</strong> JSON tends to be compact; XML is more verbose.
+        </li>
+        <li>
+          <strong>Interoperability:</strong> JSON is widely supported across languages and tools.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        🔍 4. Choosing the Right Format
+      </h2>
+      <p>
+        Consider the following when selecting a textual format for your API:
+      </p>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Use JSON</strong> for general purpose APIs with hierarchical data and broad compatibility.</li>
+        <li><strong>Use XML</strong> if you require strong validation, namespaces, or must integrate with legacy
+          systems.</li>
+        <li><strong>Use YAML</strong> for configuration or when human readability and comments are important.</li>
+        <li><strong>Use CSV</strong> for simple flat data or interoperability with spreadsheet tools.</li>
+      </ul>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        🛠️ 5. API Design Considerations with Textual Data
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>
+          <strong>Content Negotiation:</strong> Allow clients to specify desired format via HTTP headers (Accept,
+          Content-Type).
+        </li>
+        <li>
+          <strong>Versioning:</strong> Different formats or schema versions may coexist; plan versioning carefully.
+        </li>
+        <li>
+          <strong>Error Handling:</strong> Define error response formats clearly and consistently.
+        </li>
+        <li>
+          <strong>Encoding:</strong> Use UTF-8 for maximum compatibility.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section 6 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        🔐 6. Security Aspects
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>
+          Be aware of injection attacks (e.g., XML External Entity - XXE).
+        </li>
+        <li>
+          Validate and sanitize all input data regardless of format.
+        </li>
+        <li>
+          Limit payload sizes to prevent denial of service.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section 7: Senior/Lead Notes -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        👑 Senior / Lead Considerations
+      </h2>
+      <ul class="list-disc list-inside space-y-3">
+        <li>
+          <strong>Architectural Impact:</strong> Choose formats aligned with broader system interoperability and
+          future-proofing. Be ready to support multiple formats and content negotiation gracefully.
+        </li>
+        <li>
+          <strong>Performance & Scalability:</strong> Evaluate parsing/serialization overhead and network payload size
+          impact, especially on high-traffic APIs.
+        </li>
+        <li>
+          <strong>Consistency & Standards:</strong> Enforce API data format standards across teams to ensure
+          maintainability and reduce integration issues.
+        </li>
+        <li>
+          <strong>Schema Management:</strong> Invest in clear schema definitions and validation tooling (JSON Schema,
+          XML XSD) to reduce client-server contract errors.
+        </li>
+        <li>
+          <strong>Security:</strong> Ensure that format-specific vulnerabilities are mitigated (e.g., XXE attacks in
+          XML). Lead reviews of API design to include security testing.
+        </li>
+        <li>
+          <strong>Documentation & Developer Experience:</strong> Provide clear API docs with examples for all supported
+          formats to aid client developers.
+        </li>
+        <li>
+          <strong>Monitoring & Analytics:</strong> Track format usage and error rates to identify issues early and
+          optimize API support accordingly.
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
