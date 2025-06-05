@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cross-Origin Resource Sharing (CORS) in APIs</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🌐 Cross-Origin Resource Sharing (CORS) in APIs</h1>
+  </header>
+
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Section 1: What is CORS? -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🔍</span>
+        <span>What is CORS?</span>
+      </h2>
+      <p>
+        Cross-Origin Resource Sharing (CORS) is a security mechanism implemented by browsers to control how
+        resources on a web server can be requested from another domain (origin). It is designed to prevent
+        malicious websites from reading sensitive data from another domain without permission.
+      </p>
+      <p class="mt-2">
+        A “cross-origin” request occurs when a web application attempts to request resources from a different
+        domain, protocol, or port than the one it originated from.
+      </p>
+    </section>
+
+    <!-- Section 2: Why CORS is Important -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>⚠️</span>
+        <span>Why CORS is Important</span>
+      </h2>
+      <p>
+        Browsers restrict cross-origin HTTP requests initiated from scripts for security reasons — known as the
+        Same-Origin Policy. Without CORS, web applications couldn't safely share resources across domains, limiting
+        integration capabilities.
+      </p>
+      <p class="mt-2">
+        CORS provides a controlled way to relax these restrictions while maintaining security by allowing servers
+        to specify who can access their resources and how.
+      </p>
+    </section>
+
+    <!-- Section 3: How CORS Works -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>⚙️</span>
+        <span>How CORS Works</span>
+      </h2>
+      <p>
+        When a browser makes a cross-origin HTTP request, it sends an <code>Origin</code> header indicating the
+        requesting domain.
+      </p>
+      <p class="mt-2">
+        The server can respond with specific headers such as:
+      </p>
+      <ul class="list-disc pl-5 mt-2 space-y-1">
+        <li><code>Access-Control-Allow-Origin</code>: Specifies which origins are permitted.</li>
+        <li><code>Access-Control-Allow-Methods</code>: Lists allowed HTTP methods (GET, POST, etc.).</li>
+        <li><code>Access-Control-Allow-Headers</code>: Specifies allowed request headers.</li>
+        <li><code>Access-Control-Allow-Credentials</code>: Indicates whether cookies or credentials are allowed.</li>
+      </ul>
+      <p class="mt-2">
+        If the response headers permit the request’s origin and method, the browser allows the response to be
+        accessed by the client-side script.
+      </p>
+    </section>
+
+    <!-- Section 4: Simple vs Preflight Requests -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🔄</span>
+        <span>Simple vs Preflight Requests</span>
+      </h2>
+      <p>
+        <strong>Simple requests</strong> are cross-origin requests that meet certain criteria (e.g., methods like GET or
+        POST with standard headers). These requests are sent directly.
+      </p>
+      <p class="mt-2">
+        <strong>Preflight requests</strong> are sent by the browser automatically for more complex requests (e.g.,
+        methods
+        like PUT, DELETE, or custom headers). This is an HTTP OPTIONS request sent before the actual request to check
+        if the cross-origin call is allowed.
+      </p>
+    </section>
+
+    <!-- Section 5: Common CORS Headers -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>📋</span>
+        <span>Common CORS Headers</span>
+      </h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>
+          <code>Access-Control-Allow-Origin</code>: Specifies allowed origin(s). Can be a specific domain or
+          <code>*</code> to allow all.
+        </li>
+        <li>
+          <code>Access-Control-Allow-Methods</code>: Allowed HTTP methods for cross-origin requests.
+        </li>
+        <li>
+          <code>Access-Control-Allow-Headers</code>: Allowed headers that the client can send.
+        </li>
+        <li>
+          <code>Access-Control-Allow-Credentials</code>: When true, cookies or HTTP authentication information can be
+          sent.
+        </li>
+        <li>
+          <code>Access-Control-Max-Age</code>: Indicates how long the results of a preflight request can be cached.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section 6: How to Enable CORS in APIs -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🛠️</span>
+        <span>How to Enable CORS in APIs</span>
+      </h2>
+      <p>
+        Most web frameworks offer built-in or middleware solutions to enable and configure CORS easily.
+      </p>
+      <p class="mt-2">
+        Examples:
+      </p>
+      <ul class="list-disc pl-5 space-y-1">
+        <li><strong>Node.js (Express):</strong> Use the <code>cors</code> middleware to configure allowed origins,
+          methods, headers, and credentials.</li>
+        <li><strong>Spring Boot:</strong> Use <code>@CrossOrigin</code> annotation or configure CORS globally.</li>
+        <li><strong>ASP.NET Core:</strong> Configure CORS in the startup with policies specifying allowed origins and
+          headers.</li>
+      </ul>
+    </section>
+
+    <!-- Section 7: Security Considerations -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🔒</span>
+        <span>Security Considerations</span>
+      </h2>
+      <p>
+        Improper CORS configuration can lead to security vulnerabilities:
+      </p>
+      <ul class="list-disc pl-5 space-y-1">
+        <li>Setting <code>Access-Control-Allow-Origin</code> to <code>*</code> while allowing credentials exposes
+          sensitive
+          data.</li>
+        <li>Allowing all methods and headers can increase attack surface.</li>
+        <li>Always whitelist specific trusted origins and limit methods/headers.</li>
+      </ul>
+    </section>
+
+    <!-- Section 8: Troubleshooting CORS Issues -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🐞</span>
+        <span>Troubleshooting CORS Issues</span>
+      </h2>
+      <p>
+        Common CORS errors include:
+      </p>
+      <ul class="list-disc pl-5 space-y-1">
+        <li><strong>No ‘Access-Control-Allow-Origin’ header:</strong> The server did not send CORS headers.</li>
+        <li><strong>Credentials error:</strong> Using <code>withCredentials</code> on client but server disallows
+          credentials.</li>
+        <li><strong>Preflight failure:</strong> Server rejects or does not respond properly to OPTIONS preflight
+          request.</li>
+      </ul>
+      <p class="mt-2">
+        To fix, check server CORS configuration, validate headers, and test with tools like Postman or browser devtools.
+      </p>
+    </section>
+
+    <!-- Section 9: Senior/Lead Needs to Know -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>👔</span>
+        <span>Senior/Lead Needs to Know</span>
+      </h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>
+          Understand the balance between enabling cross-origin requests for business needs and protecting API security.
+        </li>
+        <li>
+          Ensure CORS policies are aligned with overall API security strategies and are regularly audited.
+        </li>
+        <li>
+          Guide team to implement strict origin whitelisting rather than permissive <code>*</code> wildcard usage.
+        </li>
+        <li>
+          Architect APIs to minimize sensitive operations exposed via cross-origin calls or require additional
+          authentication.
+        </li>
+        <li>
+          Monitor and log cross-origin requests to detect suspicious or unauthorized access patterns.
+        </li>
+        <li>
+          Educate developers on preflight request impacts and optimize APIs to reduce unnecessary preflight overhead.
+        </li>
+        <li>
+          Integrate CORS configuration as part of CI/CD pipelines and infrastructure as code to maintain consistency.
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
