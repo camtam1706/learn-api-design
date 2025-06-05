@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolution of HTTP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🌐 Evolution of HTTP</h1>
+  </header>
+
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold flex items-center space-x-2">
+        <span>📘 HTTP/0.9</span>
+      </h2>
+      <p>Introduced in 1991, HTTP/0.9 was the first version of the protocol. It was a simple client-server and
+        request-response protocol supporting only the GET method. Responses consisted solely of raw HTML, without
+        headers or status codes. Connections were closed immediately after sending the response.</p>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold flex items-center space-x-2">
+        <span>📘 HTTP/1.0</span>
+      </h2>
+      <p>Released in 1996, HTTP/1.0 introduced support for HTTP header fields, allowing for metadata in requests and
+        responses. This version supported multiple methods like GET, POST, and HEAD, enabling the transfer of various
+        content types beyond just HTML. However, it lacked persistent connections, leading to inefficiencies in handling
+        multiple requests.</p>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold flex items-center space-x-2">
+        <span>📘 HTTP/1.1</span>
+      </h2>
+      <p>Published in 1997, HTTP/1.1 brought significant improvements, including persistent connections, pipelining, and
+        additional cache control mechanisms. It also introduced support for methods like PUT, DELETE, and OPTIONS,
+        enhancing its capability to handle a wider range of operations.</p>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold flex items-center space-x-2">
+        <span>📘 HTTP/2</span>
+      </h2>
+      <p>Released in 2015, HTTP/2 shifted from a text-based to a binary protocol, improving performance through features
+        like multiplexing, header compression, and server push. These enhancements reduced latency and allowed for more
+        efficient use of network resources.</p>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold flex items-center space-x-2">
+        <span>📘 HTTP/3</span>
+      </h2>
+      <p>Introduced in 2019, HTTP/3 is based on QUIC, a transport protocol built over UDP. It aims to reduce latency and
+        improve performance, especially in high-loss or high-latency networks. HTTP/3 also offers better multiplexing
+        and header compression, further enhancing the efficiency of web communications.</p>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold flex items-center space-x-2">
+        <span>⚠️ Senior/Lead Engineers: Key Considerations</span>
+      </h2>
+      <ul class="list-disc pl-5">
+        <li><strong>Protocol Selection:</strong> Choose the appropriate HTTP version based on the specific needs of your
+          application, considering factors like performance, security, and compatibility.</li>
+        <li><strong>Versioning Strategy:</strong> Implement a clear versioning strategy to manage changes and ensure
+          backward compatibility.</li>
+        <li><strong>Performance Optimization:</strong> Leverage features like multiplexing and header compression in
+          HTTP/2 and HTTP/3 to optimize performance.</li>
+        <li><strong>Security Considerations:</strong> Ensure secure communication by utilizing protocols that support
+          encryption and other security features.</li>
+        <li><strong>Scalability:</strong> Design your systems to handle increased load efficiently, taking advantage of
+          persistent connections and other scalability features in newer HTTP versions.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+</body>
+
+</html>
