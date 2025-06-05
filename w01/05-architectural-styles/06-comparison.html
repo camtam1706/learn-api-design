@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comparisons of Different API Architecture Styles</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🔍 Comparisons of Different API Architecture Styles</h1>
+  </header>
+
+  <!-- Main content -->
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Section: Introduction -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">📚</span> Introduction
+      </h2>
+      <p>
+        API design is critical for building scalable, maintainable, and performant systems. Various API architectural
+        styles exist, each with unique characteristics, benefits, and trade-offs.
+      </p>
+      <p class="mt-2">
+        This guide compares the common API architecture styles to help you understand their differences and choose the
+        best fit for your project needs.
+      </p>
+    </section>
+
+    <!-- Section: REST (Representational State Transfer) -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🔗</span> REST (Representational State Transfer)
+      </h2>
+      <p>
+        REST is an architectural style that uses stateless HTTP requests and relies on standard HTTP methods such as
+        GET, POST, PUT, DELETE.
+      </p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Statelessness:</strong> Each request from client to server must contain all information needed to
+          understand the request.</li>
+        <li><strong>Resources:</strong> Everything is a resource, identified by a URL.</li>
+        <li><strong>Uniform Interface:</strong> Standardized methods and conventions simplify interactions.</li>
+      </ul>
+      <p class="mt-2">
+        REST is popular for its simplicity, scalability, and ability to leverage HTTP infrastructure.
+      </p>
+    </section>
+
+    <!-- Section: SOAP (Simple Object Access Protocol) -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">📜</span> SOAP (Simple Object Access Protocol)
+      </h2>
+      <p>
+        SOAP is a protocol for exchanging structured information in web services, using XML as the message format.
+      </p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Strict standards:</strong> Highly structured message format with built-in error handling.</li>
+        <li><strong>Protocol-independent:</strong> Can operate over HTTP, SMTP, TCP, etc.</li>
+        <li><strong>Security:</strong> Supports WS-Security standards for message integrity and confidentiality.</li>
+      </ul>
+      <p class="mt-2">
+        SOAP is preferred in enterprise environments requiring strict contracts, formal security, and reliable
+        messaging.
+      </p>
+    </section>
+
+    <!-- Section: GraphQL -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🕸️</span> GraphQL
+      </h2>
+      <p>
+        GraphQL is a query language for APIs and a runtime to fulfill those queries with your existing data.
+      </p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Client-driven queries:</strong> Clients specify exactly what data they need.</li>
+        <li><strong>Single endpoint:</strong> Unlike REST, all queries go through a single endpoint.</li>
+        <li><strong>Strongly typed schema:</strong> Defines data types and relationships explicitly.</li>
+      </ul>
+      <p class="mt-2">
+        GraphQL enables efficient data fetching and reduces over-fetching or under-fetching but adds complexity in
+        schema design and caching.
+      </p>
+    </section>
+
+    <!-- Section: gRPC -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">⚡</span> gRPC
+      </h2>
+      <p>
+        gRPC is a high-performance RPC framework developed by Google that uses HTTP/2 for transport and Protocol Buffers
+        as the interface definition language.
+      </p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Efficient binary serialization:</strong> Small message sizes and fast parsing.</li>
+        <li><strong>Bidirectional streaming:</strong> Supports multiple streams and full-duplex communication.</li>
+        <li><strong>Strongly typed contracts:</strong> Enforced via Protocol Buffers.</li>
+      </ul>
+      <p class="mt-2">
+        gRPC is suitable for microservices communication and low-latency, high-throughput scenarios.
+      </p>
+    </section>
+
+    <!-- Section: WebSockets -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🌐</span> WebSockets
+      </h2>
+      <p>
+        WebSockets provide a persistent full-duplex communication channel over a single TCP connection, ideal for
+        real-time applications.
+      </p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li><strong>Persistent connection:</strong> Enables server push and bi-directional messaging.</li>
+        <li><strong>Low latency:</strong> Eliminates overhead of HTTP requests for frequent communication.</li>
+        <li><strong>Use cases:</strong> Chat apps, live notifications, gaming, financial tickers.</li>
+      </ul>
+      <p class="mt-2">
+        WebSockets are not typically used for CRUD API calls but complement other API styles for real-time features.
+      </p>
+    </section>
+
+    <!-- Section: Comparison Summary -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">📊</span> Comparison Summary
+      </h2>
+      <table class="table-auto w-full border border-gray-300 text-left text-sm">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-300 px-3 py-2">Architecture</th>
+            <th class="border border-gray-300 px-3 py-2">Protocol</th>
+            <th class="border border-gray-300 px-3 py-2">Message Format</th>
+            <th class="border border-gray-300 px-3 py-2">Use Case</th>
+            <th class="border border-gray-300 px-3 py-2">Strengths</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd:bg-white even:bg-gray-50">
+            <td class="border border-gray-300 px-3 py-2">REST</td>
+            <td class="border border-gray-300 px-3 py-2">HTTP</td>
+            <td class="border border-gray-300 px-3 py-2">JSON, XML</td>
+            <td class="border border-gray-300 px-3 py-2">General purpose, web APIs</td>
+            <td class="border border-gray-300 px-3 py-2">Simplicity, scalability, cacheability</td>
+          </tr>
+          <tr class="odd:bg-white even:bg-gray-50">
+            <td class="border border-gray-300 px-3 py-2">SOAP</td>
+            <td class="border border-gray-300 px-3 py-2">Any (HTTP, SMTP, TCP)</td>
+            <td class="border border-gray-300 px-3 py-2">XML</td>
+            <td class="border border-gray-300 px-3 py-2">Enterprise services, strict contracts</td>
+            <td class="border border-gray-300 px-3 py-2">Formal contracts, security, reliability</td>
+          </tr>
+          <tr class="odd:bg-white even:bg-gray-50">
+            <td class="border border-gray-300 px-3 py-2">GraphQL</td>
+            <td class="border border-gray-300 px-3 py-2">HTTP (typically POST)</td>
+            <td class="border border-gray-300 px-3 py-2">JSON</td>
+            <td class="border border-gray-300 px-3 py-2">Client-driven queries, complex data</td>
+            <td class="border border-gray-300 px-3 py-2">Efficient data fetching, flexibility</td>
+          </tr>
+          <tr class="odd:bg-white even:bg-gray-50">
+            <td class="border border-gray-300 px-3 py-2">gRPC</td>
+            <td class="border border-gray-300 px-3 py-2">HTTP/2</td>
+            <td class="border border-gray-300 px-3 py-2">Protocol Buffers (binary)</td>
+            <td class="border border-gray-300 px-3 py-2">Microservices, low-latency comms</td>
+            <td class="border border-gray-300 px-3 py-2">Performance, streaming, strong typing</td>
+          </tr>
+          <tr class="odd:bg-white even:bg-gray-50">
+            <td class="border border-gray-300 px-3 py-2">WebSockets</td>
+            <td class="border border-gray-300 px-3 py-2">TCP</td>
+            <td class="border border-gray-300 px-3 py-2">Text/Binary</td>
+            <td class="border border-gray-300 px-3 py-2">Real-time, interactive apps</td>
+            <td class="border border-gray-300 px-3 py-2">Persistent connection, low latency</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Section: Senior/Lead Considerations -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🚩</span> Senior / Lead Must-Know Points
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>
+          <strong>Choosing the Right Style:</strong> Understand business requirements and constraints before selecting
+          an API style. Consider scalability, client needs, and infrastructure.
+        </li>
+        <li>
+          <strong>Performance vs. Flexibility:</strong> Balance high performance (gRPC, WebSockets) against flexible
+          client queries (GraphQL) and simplicity (REST).
+        </li>
+        <li>
+          <strong>Security and Compliance:</strong> Ensure proper security protocols are in place, especially when
+          dealing with SOAP or sensitive data.
+        </li>
+        <li>
+          <strong>Versioning and Evolution:</strong> Plan API versioning to support backward compatibility and smooth
+          client upgrades.
+        </li>
+        <li>
+          <strong>Monitoring and Observability:</strong> Implement comprehensive logging, metrics, and tracing
+          regardless of API style for maintainability.
+        </li>
+        <li>
+          <strong>Team Skill Set:</strong> Align API style with your development team's expertise to avoid complexity
+          and delays.
+        </li>
+        <li>
+          <strong>Documentation and Contracts:</strong> Maintain clear and up-to-date API documentation and enforce
+          contracts to reduce integration errors.
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
