@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GraphQL - A Query Language for APIs</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🔍 GraphQL - A Query Language for APIs</h1>
+  </header>
+
+  <!-- Main content -->
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Section: REST vs GraphQL Comparison Image -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🔄</span> REST vs GraphQL Comparison (Fixed SVG)
+      </h2>
+      <div class="flex justify-center overflow-x-auto">
+        <svg width="700" height="360" viewBox="0 0 700 360" fill="none" xmlns="http://www.w3.org/2000/svg"
+          class="max-w-full">
+          <!-- REST Container -->
+          <rect x="10" y="10" width="330" height="340" rx="12" fill="#cce4ff" stroke="#4a90e2" stroke-width="2" />
+          <text x="175" y="45" font-size="26" font-weight="700" fill="#0d47a1" text-anchor="middle"
+            font-family="Arial, sans-serif">
+            REST
+          </text>
+
+          <!-- REST Client -->
+          <rect x="70" y="140" width="90" height="90" rx="12" fill="#1976d2" stroke="#1565c0" stroke-width="2" />
+          <circle cx="115" cy="175" r="15" fill="#90caf9" />
+          <text x="115" y="210" font-size="16" font-weight="700" fill="white" text-anchor="middle"
+            font-family="Arial, sans-serif">
+            Client
+          </text>
+
+          <!-- REST Endpoints -->
+          <circle cx="270" cy="95" r="22" fill="none" stroke="#fbc02d" stroke-width="3" />
+          <circle cx="270" cy="175" r="22" fill="none" stroke="#fbc02d" stroke-width="3" />
+          <circle cx="270" cy="255" r="22" fill="none" stroke="#fbc02d" stroke-width="3" />
+
+          <text x="320" y="100" font-size="14" fill="#555" font-family="Arial, sans-serif" alignment-baseline="middle">
+            Endpoint 1
+          </text>
+          <text x="320" y="180" font-size="14" fill="#555" font-family="Arial, sans-serif" alignment-baseline="middle">
+            Endpoint 2
+          </text>
+          <text x="320" y="260" font-size="14" fill="#555" font-family="Arial, sans-serif" alignment-baseline="middle">
+            Endpoint 3
+          </text>
+
+          <!-- REST Arrows -->
+          <defs>
+            <marker id="arrowhead-rest" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto" fill="#1565c0">
+              <polygon points="0 0, 8 3, 0 6" />
+            </marker>
+          </defs>
+
+          <line x1="160" y1="165" x2="248" y2="95" stroke="#1565c0" stroke-width="3"
+            marker-end="url(#arrowhead-rest)" />
+          <line x1="160" y1="185" x2="248" y2="175" stroke="#1565c0" stroke-width="3"
+            marker-end="url(#arrowhead-rest)" />
+          <line x1="160" y1="205" x2="248" y2="255" stroke="#1565c0" stroke-width="3"
+            marker-end="url(#arrowhead-rest)" />
+
+          <line x1="248" y1="105" x2="160" y2="145" stroke="#1565c0" stroke-width="3"
+            marker-end="url(#arrowhead-rest)" />
+          <line x1="248" y1="185" x2="160" y2="185" stroke="#1565c0" stroke-width="3"
+            marker-end="url(#arrowhead-rest)" />
+          <line x1="248" y1="265" x2="160" y2="205" stroke="#1565c0" stroke-width="3"
+            marker-end="url(#arrowhead-rest)" />
+
+          <!-- GraphQL Container -->
+          <rect x="360" y="10" width="330" height="340" rx="12" fill="#d7f2d8" stroke="#4caf50" stroke-width="2" />
+          <text x="525" y="45" font-size="26" font-weight="700" fill="#2e7d32" text-anchor="middle"
+            font-family="Arial, sans-serif">
+            GraphQL
+          </text>
+
+          <!-- GraphQL Client -->
+          <rect x="420" y="140" width="90" height="90" rx="12" fill="#388e3c" stroke="#2e7d32" stroke-width="2" />
+          <circle cx="465" cy="175" r="15" fill="#a5d6a7" />
+          <text x="465" y="210" font-size="16" font-weight="700" fill="white" text-anchor="middle"
+            font-family="Arial, sans-serif">
+            Client
+          </text>
+
+          <!-- GraphQL Central Node -->
+          <circle cx="580" cy="175" r="35" fill="#ab47bc" />
+          <text x="580" y="180" font-size="14" fill="white" font-weight="700" text-anchor="middle"
+            font-family="Arial, sans-serif">
+            API
+          </text>
+
+          <!-- GraphQL Endpoints -->
+          <circle cx="640" cy="90" r="22" fill="none" stroke="#fbc02d" stroke-width="3" />
+          <circle cx="640" cy="175" r="22" fill="none" stroke="#fbc02d" stroke-width="3" />
+          <circle cx="640" cy="260" r="22" fill="none" stroke="#fbc02d" stroke-width="3" />
+
+          <text x="320" y="100" font-size="14" fill="#555" font-family="Arial, sans-serif" alignment-baseline="middle">
+            Endpoint 1
+          </text>
+          <text x="320" y="180" font-size="14" fill="#555" font-family="Arial, sans-serif" alignment-baseline="middle">
+            Endpoint 2
+          </text>
+          <text x="320" y="260" font-size="14" fill="#555" font-family="Arial, sans-serif" alignment-baseline="middle">
+            Endpoint 3
+          </text>
+
+          <!-- GraphQL Arrows -->
+          <defs>
+            <marker id="arrowhead-graphql" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto"
+              fill="#2e7d32">
+              <polygon points="0 0, 8 3, 0 6" />
+            </marker>
+          </defs>
+
+          <!-- Client to API -->
+          <line x1="510" y1="175" x2="545" y2="175" stroke="#2e7d32" stroke-width="3"
+            marker-end="url(#arrowhead-graphql)" />
+          <line x1="545" y1="175" x2="510" y2="175" stroke="#2e7d32" stroke-width="3"
+            marker-end="url(#arrowhead-graphql)" />
+
+          <!-- API to Endpoints -->
+          <line x1="610" y1="135" x2="638" y2="90" stroke="#7b1fa2" stroke-width="3"
+            marker-end="url(#arrowhead-graphql)" />
+          <line x1="610" y1="175" x2="638" y2="175" stroke="#7b1fa2" stroke-width="3"
+            marker-end="url(#arrowhead-graphql)" />
+          <line x1="610" y1="215" x2="638" y2="260" stroke="#7b1fa2" stroke-width="3"
+            marker-end="url(#arrowhead-graphql)" />
+
+          <!-- Endpoints to API -->
+          <line x1="638" y1="100" x2="610" y2="130" stroke="#7b1fa2" stroke-width="3"
+            marker-end="url(#arrowhead-graphql)" />
+          <line x1="638" y1="175" x2="610" y2="175" stroke="#7b1fa2" stroke-width="3"
+            marker-end="url(#arrowhead-graphql)" />
+          <line x1="638" y1="250" x2="610" y2="220" stroke="#7b1fa2" stroke-width="3"
+            marker-end="url(#arrowhead-graphql)" />
+        </svg>
+      </div>
+      <p class="mt-4 text-center text-gray-600 text-sm">
+        Illustration comparing REST’s multiple endpoints with GraphQL’s single flexible endpoint.
+      </p>
+    </section>
+
+
+    <!-- Section 1 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">📖</span> Introduction to GraphQL
+      </h2>
+      <p>
+        GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data.
+        It was developed by Facebook in 2012 and released publicly in 2015. Unlike REST, GraphQL allows clients to
+        request exactly the data they need, reducing over-fetching and under-fetching of data.
+      </p>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🛠️</span> Core Concepts of GraphQL
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Schema:</strong> Defines the structure of data available to clients, including types and
+          relationships.</li>
+        <li><strong>Queries:</strong> Clients use queries to specify exactly what data they want.</li>
+        <li><strong>Mutations:</strong> Used to modify server-side data (create, update, delete).</li>
+        <li><strong>Resolvers:</strong> Functions that resolve queries and mutations by fetching data from sources.</li>
+        <li><strong>Types:</strong> Strongly typed system including scalars (String, Int, Boolean), objects, enums, etc.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">⚡</span> Benefits of Using GraphQL
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Efficient Data Fetching:</strong> Clients get only the data they request, minimizing bandwidth
+          usage.</li>
+        <li><strong>Single Endpoint:</strong> Unlike REST APIs that have multiple endpoints, GraphQL uses a single
+          endpoint.</li>
+        <li><strong>Strong Typing:</strong> Schema acts as a contract between client and server, improving reliability.
+        </li>
+        <li><strong>Introspection:</strong> Clients can query the schema itself to discover API capabilities
+          dynamically.</li>
+        <li><strong>Improved Developer Experience:</strong> Tools like GraphiQL and Apollo Studio make exploration and
+          debugging easier.</li>
+      </ul>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🔍</span> How GraphQL Works
+      </h2>
+      <p>
+        When a client sends a query to the GraphQL server, the server parses and validates the query against the schema.
+        Then, resolvers execute to fetch the required data from databases or other APIs.
+        The server assembles and returns only the requested data in a predictable JSON format.
+      </p>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">📝</span> Example Query & Response
+      </h2>
+      <pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto">
+<code>
+query {
+  user(id: "1") {
+    id
+    name
+    email
+    posts {
+      id
+      title
+    }
+  }
+}
+</code>
+      </pre>
+      <p class="mt-4">
+        The response returns exactly the requested fields for user and their posts.
+      </p>
+    </section>
+
+    <!-- Section 6 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">✏️</span> Mutations Example
+      </h2>
+      <pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto">
+<code>
+mutation {
+  createPost(input: {title: "New Post", content: "GraphQL is awesome!"}) {
+    id
+    title
+    content
+  }
+}
+</code>
+      </pre>
+      <p class="mt-4">
+        Mutations allow clients to modify data. The server returns the newly created post with requested fields.
+      </p>
+    </section>
+
+    <!-- Section 7 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🔗</span> GraphQL vs REST
+      </h2>
+      <table class="w-full text-left border-collapse border border-gray-300">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border border-gray-300 p-2">Feature</th>
+            <th class="border border-gray-300 p-2">GraphQL</th>
+            <th class="border border-gray-300 p-2">REST</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 p-2">Data Fetching</td>
+            <td class="border border-gray-300 p-2">Client specifies exactly what data to fetch</td>
+            <td class="border border-gray-300 p-2">Multiple endpoints, fixed data per endpoint</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">Endpoints</td>
+            <td class="border border-gray-300 p-2">Single endpoint</td>
+            <td class="border border-gray-300 p-2">Multiple endpoints</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">Versioning</td>
+            <td class="border border-gray-300 p-2">Typically no versioning needed</td>
+            <td class="border border-gray-300 p-2">Versions via URL (v1, v2, ...)</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">Over-fetching/Under-fetching</td>
+            <td class="border border-gray-300 p-2">Avoided by query specificity</td>
+            <td class="border border-gray-300 p-2">Common issues</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Section 8 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🧩</span> GraphQL Tools and Ecosystem
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Apollo Client/Server:</strong> Popular libraries for building GraphQL clients and servers.</li>
+        <li><strong>GraphiQL:</strong> Interactive in-browser IDE for testing queries and exploring schema.</li>
+        <li><strong>Relay:</strong> Facebook's JavaScript framework for React with GraphQL integration.</li>
+        <li><strong>Subscriptions:</strong> Real-time data updates over WebSockets.</li>
+      </ul>
+    </section>
+
+    <!-- Section 9 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🚀</span> Best Practices
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Design clear and consistent schemas with descriptive types and fields.</li>
+        <li>Limit query complexity and depth to avoid expensive or malicious queries.</li>
+        <li>Implement proper error handling and return meaningful error messages.</li>
+        <li>Use pagination and batching to optimize large data sets fetching.</li>
+        <li>Secure your API with authentication and authorization rules.</li>
+      </ul>
+    </section>
+
+    <!-- Section 10 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">👑</span> Senior/Lead Developer Considerations
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Schema Governance:</strong> Maintain schema version control and evolve schema without breaking
+          clients.</li>
+        <li><strong>Performance Monitoring:</strong> Track resolver performance, query complexity, and latency.</li>
+        <li><strong>Security:</strong> Enforce strict authentication, authorization, and input validation at the API
+          layer.</li>
+        <li><strong>Team Collaboration:</strong> Establish clear API contracts and document schema changes for
+          frontend/backend teams.</li>
+        <li><strong>Tooling & Automation:</strong> Automate schema validation, code generation, and testing pipelines.
+        </li>
+        <li><strong>Real-time & Caching Strategies:</strong> Architect solutions for subscriptions and caching layers to
+          enhance UX and scalability.</li>
+        <li><strong>Error Handling & Observability:</strong> Implement consistent error reporting and observability for
+          faster debugging.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
