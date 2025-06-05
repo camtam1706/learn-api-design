@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding WebSockets in API Design</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🔗 Understanding WebSockets in API Design</h1>
+  </header>
+
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4">📌 Introduction to WebSockets</h2>
+      <p>WebSocket is a communication protocol that enables two-way communication between a client and server over a
+        single, long-lived TCP connection. Unlike HTTP, which follows a request-response model, WebSocket allows for
+        continuous data exchange, making it ideal for real-time applications like chat systems, live notifications, and
+        online gaming.</p>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4">🔄 WebSockets vs. HTTP Polling</h2>
+      <table class="min-w-full table-auto border-collapse border border-gray-300">
+        <thead>
+          <tr>
+            <th class="border border-gray-300 px-4 py-2">Method</th>
+            <th class="border border-gray-300 px-4 py-2">Advantages</th>
+            <th class="border border-gray-300 px-4 py-2">Disadvantages</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">HTTP Polling</td>
+            <td class="border border-gray-300 px-4 py-2">Simple to implement, widely supported</td>
+            <td class="border border-gray-300 px-4 py-2">High latency, inefficient for real-time data</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">WebSockets</td>
+            <td class="border border-gray-300 px-4 py-2">Low latency, efficient for real-time communication</td>
+            <td class="border border-gray-300 px-4 py-2">More complex to implement, requires persistent connections</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4">🔐 Security Considerations</h2>
+      <p>WebSockets do not inherently adhere to the same-origin policy, which can expose applications to security risks
+        like Cross-Site WebSocket Hijacking (CSWSH). To mitigate these risks, it's essential to:</p>
+      <ul class="list-disc pl-6">
+        <li>Use the secure WebSocket protocol (wss://) to encrypt data.</li>
+        <li>Validate the "Origin" header to ensure requests come from trusted sources.</li>
+        <li>Implement proper authentication and authorization mechanisms.</li>
+      </ul>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4">⚙️ Implementing WebSockets in a Chat Application</h2>
+      <p>In chat applications, WebSockets facilitate real-time message delivery, presence indicators, and typing
+        notifications. A typical API design might include:</p>
+      <ul class="list-disc pl-6">
+        <li><strong>WebSocket Endpoint:</strong> Establishes a persistent connection for real-time communication.</li>
+        <li><strong>RESTful Endpoints:</strong> Handles user authentication, message history retrieval, and media
+          uploads.</li>
+      </ul>
+      <p>This hybrid approach ensures both real-time interactivity and robust data management.</p>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4">👨‍💻 Senior/Lead Engineer Considerations</h2>
+      <ul class="list-disc pl-6">
+        <li><strong>Scalability:</strong> Design systems to handle a large number of concurrent WebSocket connections
+          efficiently.</li>
+        <li><strong>Monitoring:</strong> Implement tools to monitor connection health, message throughput, and error
+          rates.</li>
+        <li><strong>Fault Tolerance:</strong> Ensure the system can gracefully handle connection drops and retries.</li>
+        <li><strong>Security:</strong> Regularly audit and update security protocols to protect against emerging
+          threats.</li>
+        <li><strong>Documentation:</strong> Maintain clear and comprehensive documentation for API endpoints and usage
+          guidelines.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+</body>
+
+</html>
