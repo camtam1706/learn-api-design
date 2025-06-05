@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Introduction to Web API Architectural Styles</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🌐 Introduction to Web API Architectural Styles</h1>
+  </header>
+
+  <!-- Main content -->
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Section 1 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🏛️</span>
+        <span>1. What is a Web API Architectural Style?</span>
+      </h2>
+      <p>
+        A Web API Architectural Style defines the set of rules and constraints that govern the design and
+        interaction patterns of web APIs. These styles help developers create APIs that are consistent,
+        scalable, and maintainable by establishing common communication protocols and structures.
+      </p>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>⚙️</span>
+        <span>2. Key Architectural Styles for Web APIs</span>
+      </h2>
+      <p>
+        The main architectural styles used in web APIs include:
+      </p>
+      <ol class="list-decimal list-inside space-y-2">
+        <li>
+          <strong>REST (Representational State Transfer):</strong> Uses stateless communication and
+          standard HTTP methods (GET, POST, PUT, DELETE). Resources are identified via URIs and representations
+          are transferred in formats like JSON or XML.
+        </li>
+        <li>
+          <strong>SOAP (Simple Object Access Protocol):</strong> Protocol using XML messaging over HTTP,
+          with strict standards for message format and security. Supports formal contracts (WSDL).
+        </li>
+        <li>
+          <strong>GraphQL:</strong> A query language for APIs that allows clients to request exactly the data
+          they need, reducing over-fetching. Supports single endpoint interactions.
+        </li>
+        <li>
+          <strong>gRPC:</strong> A high-performance RPC framework using Protocol Buffers for data serialization.
+          Efficient for microservices and internal APIs.
+        </li>
+      </ol>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🔍</span>
+        <span>3. REST Architectural Constraints</span>
+      </h2>
+      <p>
+        REST APIs follow these core constraints to ensure scalability and simplicity:
+      </p>
+      <ul class="list-disc list-inside space-y-1">
+        <li><strong>Statelessness:</strong> Each request from client to server must contain all necessary information.
+        </li>
+        <li><strong>Client-Server:</strong> Separation of concerns between client UI and server data/storage.</li>
+        <li><strong>Cacheability:</strong> Responses should define themselves as cacheable or non-cacheable.</li>
+        <li><strong>Uniform Interface:</strong> Standardized methods and URIs for resource manipulation.</li>
+        <li><strong>Layered System:</strong> Architecture can have multiple layers for scalability and security.</li>
+        <li><strong>Code on Demand (optional):</strong> Servers can send executable code to clients.</li>
+      </ul>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>📊</span>
+        <span>4. Comparing Architectural Styles</span>
+      </h2>
+      <table class="w-full text-left border border-gray-300 rounded">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="border border-gray-300 px-3 py-2">Style</th>
+            <th class="border border-gray-300 px-3 py-2">Communication</th>
+            <th class="border border-gray-300 px-3 py-2">Data Format</th>
+            <th class="border border-gray-300 px-3 py-2">Use Cases</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 px-3 py-2">REST</td>
+            <td class="border border-gray-300 px-3 py-2">Stateless HTTP</td>
+            <td class="border border-gray-300 px-3 py-2">JSON, XML</td>
+            <td class="border border-gray-300 px-3 py-2">Public APIs, web services</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-300 px-3 py-2">SOAP</td>
+            <td class="border border-gray-300 px-3 py-2">XML over HTTP/SMTP</td>
+            <td class="border border-gray-300 px-3 py-2">XML</td>
+            <td class="border border-gray-300 px-3 py-2">Enterprise-level, secured services</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-3 py-2">GraphQL</td>
+            <td class="border border-gray-300 px-3 py-2">Single endpoint queries</td>
+            <td class="border border-gray-300 px-3 py-2">JSON</td>
+            <td class="border border-gray-300 px-3 py-2">Flexible client data fetching</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-300 px-3 py-2">gRPC</td>
+            <td class="border border-gray-300 px-3 py-2">HTTP/2, RPC calls</td>
+            <td class="border border-gray-300 px-3 py-2">Protocol Buffers</td>
+            <td class="border border-gray-300 px-3 py-2">High-performance microservices</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🚀</span>
+        <span>5. Benefits of Choosing the Right Architectural Style</span>
+      </h2>
+      <p>
+        Selecting an appropriate architectural style influences API:
+      </p>
+      <ul class="list-disc list-inside space-y-1">
+        <li><strong>Scalability:</strong> Handles increasing loads effectively.</li>
+        <li><strong>Maintainability:</strong> Easier to update and extend over time.</li>
+        <li><strong>Performance:</strong> Efficient data transfer and low latency.</li>
+        <li><strong>Interoperability:</strong> Compatibility with diverse clients and platforms.</li>
+      </ul>
+    </section>
+
+    <!-- Section 6 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🛠️</span>
+        <span>6. When to Use Each Style?</span>
+      </h2>
+      <p>
+        <strong>REST:</strong> General-purpose APIs with standard CRUD operations.<br />
+        <strong>SOAP:</strong> When strict contracts, security, and formal standards are required.<br />
+        <strong>GraphQL:</strong> When clients need flexible queries and minimize over-fetching.<br />
+        <strong>gRPC:</strong> Internal microservices needing high performance and efficient communication.
+      </p>
+    </section>
+
+    <!-- Section 7 -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>📌</span>
+        <span>7. Senior/Lead Developer Considerations</span>
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Architectural Alignment:</strong> Ensure chosen API style fits product goals and infrastructure.
+        </li>
+        <li><strong>Team Skillset:</strong> Match technology choice with team expertise for maintainability.</li>
+        <li><strong>Security Requirements:</strong> Understand security implications of each style and implement
+          accordingly.</li>
+        <li><strong>Performance & Scalability:</strong> Anticipate load and choose styles that scale efficiently.</li>
+        <li><strong>Versioning Strategy:</strong> Plan how API changes will be handled without breaking clients.</li>
+        <li><strong>Documentation & Testing:</strong> Ensure comprehensive API docs and automated tests exist.</li>
+        <li><strong>Monitoring & Metrics:</strong> Set up proper monitoring to observe API health and usage patterns.
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
