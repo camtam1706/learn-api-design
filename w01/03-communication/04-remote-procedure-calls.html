@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding Remote Procedure Calls (RPCs)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🔧 Understanding Remote Procedure Calls (RPCs)</h1>
+  </header>
+
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4">📘 Introduction to RPC</h2>
+      <p>Remote Procedure Call (RPC) is a protocol that allows a program to execute a procedure on another address space
+        (commonly on another physical machine) as if it were a local procedure call, abstracting the network
+        communication details from the developer.</p>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4">🔍 RPC Architecture</h2>
+      <ul class="list-disc pl-6">
+        <li><strong>Client:</strong> Initiates the RPC by requesting a remote procedure.</li>
+        <li><strong>Client Stub:</strong> Marshals the procedure parameters and sends them to the server.</li>
+        <li><strong>RPC Runtime:</strong> Handles the transmission of data between client and server.</li>
+        <li><strong>Server Stub:</strong> Unmarshals the parameters and invokes the procedure on the server.</li>
+        <li><strong>Server:</strong> Executes the procedure and returns the result to the client.</li>
+      </ul>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4">⚙️ Advantages and Disadvantages of RPC</h2>
+      <p><strong>Advantages:</strong></p>
+      <ul class="list-disc pl-6">
+        <li>Abstracts network communication, simplifying distributed application development.</li>
+        <li>Supports multiple programming languages, facilitating integration across diverse systems.</li>
+        <li>High performance with support for streaming, suitable for real-time applications.</li>
+      </ul>
+      <p><strong>Disadvantages:</strong></p>
+      <ul class="list-disc pl-6">
+        <li>Network failures can disrupt communication, requiring robust error handling mechanisms.</li>
+        <li>Security concerns, necessitating encryption and authentication strategies.</li>
+      </ul>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4">🛠️ Popular RPC Frameworks</h2>
+      <ul class="list-disc pl-6">
+        <li><strong>gRPC:</strong> A modern, high-performance RPC framework developed by Google, utilizing HTTP/2 and
+          Protocol Buffers for efficient communication.</li>
+        <li><strong>Apache Thrift:</strong> A cross-language RPC framework that supports multiple protocols and data
+          formats.</li>
+        <li><strong>JSON-RPC:</strong> A lightweight RPC protocol that uses JSON for encoding and HTTP for transport.
+        </li>
+      </ul>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4">👨‍💼 Considerations for Senior/Lead Engineers</h2>
+      <p>Senior and lead engineers should focus on the following aspects when working with RPCs:</p>
+      <ul class="list-disc pl-6">
+        <li>Evaluate and select appropriate RPC frameworks based on project requirements and constraints.</li>
+        <li>Design system architectures that leverage RPCs for efficient communication between services.</li>
+        <li>Implement robust error handling and security measures to ensure reliability and safety in distributed
+          systems.</li>
+        <li>Monitor and optimize RPC performance to meet latency and throughput requirements.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+</body>
+
+</html>
