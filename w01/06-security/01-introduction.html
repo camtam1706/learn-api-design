@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Introduction to API Security</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🔐 Introduction to API Security</h1>
+  </header>
+
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Section 1: What is API Security? -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🛡️</span> What is API Security?
+      </h2>
+      <p>
+        API security refers to the practice of protecting Application Programming Interfaces (APIs) from malicious
+        attacks,
+        unauthorized access, and misuse. APIs act as gateways between software systems and external users or
+        applications,
+        making them prime targets for cyber threats.
+      </p>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-6 flex items-center">
+        <span class="mr-2">📊</span> API Security Overview Diagram
+      </h2>
+      <div class="flex justify-center">
+        <svg width="320" height="320" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img"
+          aria-label="API Security Venn Diagram">
+          <!-- Circles -->
+          <circle cx="100" cy="120" r="90" fill="rgba(147,112,219,0.4)" />
+          <circle cx="220" cy="120" r="90" fill="rgba(144,238,144,0.4)" />
+          <circle cx="160" cy="220" r="90" fill="rgba(255,165,79,0.4)" />
+
+          <!-- Labels -->
+          <text x="30" y="100" font-size="18" font-weight="700" fill="#555"
+            font-family="Arial, sans-serif">Application</text>
+          <text x="45" y="120" font-size="18" font-weight="700" fill="#555"
+            font-family="Arial, sans-serif">Security</text>
+
+          <text x="210" y="100" font-size="18" font-weight="700" fill="#555"
+            font-family="Arial, sans-serif">Network</text>
+          <text x="210" y="120" font-size="18" font-weight="700" fill="#555"
+            font-family="Arial, sans-serif">Security</text>
+
+          <text x="140" y="230" font-size="18" font-weight="700" fill="#555" font-family="Arial, sans-serif">Data</text>
+          <text x="130" y="250" font-size="18" font-weight="700" fill="#555"
+            font-family="Arial, sans-serif">Security</text>
+
+          <!-- Center label -->
+          <text x="145" y="170" font-size="20" font-weight="800" fill="#444" font-family="Arial, sans-serif">API</text>
+          <text x="120" y="190" font-size="20" font-weight="800" fill="#444"
+            font-family="Arial, sans-serif">Security</text>
+
+          <!-- Arrow pointing down to center -->
+          <line x1="160" y1="110" x2="160" y2="130" stroke="#444" stroke-width="2" marker-end="url(#arrowhead)" />
+          <defs>
+            <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+              <path d="M0,0 L8,3 L0,6" fill="#444" />
+            </marker>
+          </defs>
+        </svg>
+      </div>
+      <p class="mt-4 text-center text-gray-700 max-w-xl mx-auto">
+        This diagram illustrates how API Security is the intersection of Application Security, Network Security, and
+        Data Security.
+      </p>
+    </section>
+
+    <!-- Section 2: Why is API Security Important? -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">⚠️</span> Why is API Security Important?
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>APIs expose sensitive data and business logic to external clients.</li>
+        <li>They are often the entry point for attackers aiming to steal data or disrupt services.</li>
+        <li>Securing APIs helps maintain trust, compliance, and overall system integrity.</li>
+      </ul>
+    </section>
+
+    <!-- Section 3: Common API Security Threats -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🚨</span> Common API Security Threats
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Broken Object Level Authorization:</strong> Inadequate checks on user permissions leading to data
+          exposure.</li>
+        <li><strong>Broken User Authentication:</strong> Weak authentication mechanisms allowing unauthorized access.
+        </li>
+        <li><strong>Excessive Data Exposure:</strong> APIs returning more data than necessary, increasing risk if
+          leaked.</li>
+        <li><strong>Mass Assignment:</strong> Attackers manipulating object properties by passing unexpected parameters.
+        </li>
+        <li><strong>Security Misconfiguration:</strong> Incorrect or missing security settings on API servers.</li>
+        <li><strong>Injection Attacks:</strong> Injection of malicious code via API parameters (e.g., SQL injection).
+        </li>
+        <li><strong>Improper Rate Limiting:</strong> Allowing unlimited requests, enabling brute force or denial of
+          service attacks.</li>
+      </ul>
+    </section>
+
+    <!-- Section 4: Best Practices for API Security -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">✅</span> Best Practices for API Security
+      </h2>
+      <ol class="list-decimal list-inside space-y-2">
+        <li><strong>Use Strong Authentication and Authorization:</strong> Implement OAuth 2.0, JWT, API keys, or other
+          robust methods to control access.</li>
+        <li><strong>Encrypt Data in Transit:</strong> Use HTTPS/TLS to protect data exchange between clients and
+          servers.</li>
+        <li><strong>Validate and Sanitize Inputs:</strong> Always validate user inputs to prevent injection and
+          malformed data.</li>
+        <li><strong>Implement Rate Limiting and Throttling:</strong> Protect APIs from abuse and denial of service by
+          limiting requests.</li>
+        <li><strong>Use API Gateways and Firewalls:</strong> Add an extra layer of defense by filtering traffic and
+          monitoring suspicious activity.</li>
+        <li><strong>Monitor and Log API Activity:</strong> Keep logs for auditing and detecting unusual behavior or
+          attacks.</li>
+        <li><strong>Limit Data Exposure:</strong> Only return necessary fields in responses, minimize sensitive data
+          exposure.</li>
+        <li><strong>Keep Software Up-to-Date:</strong> Regularly patch API frameworks and dependencies to fix security
+          vulnerabilities.</li>
+      </ol>
+    </section>
+
+    <!-- Section 5: Authentication & Authorization in APIs -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🔑</span> Authentication & Authorization in APIs
+      </h2>
+      <p>
+        Authentication verifies the identity of a user or client, while authorization determines what actions they are
+        allowed to perform.
+        Common methods include:
+      </p>
+      <ul class="list-disc list-inside space-y-2 mt-2">
+        <li><strong>API Keys:</strong> Simple tokens passed with requests; easy but limited security.</li>
+        <li><strong>OAuth 2.0:</strong> Industry-standard protocol for delegated authorization using access tokens.</li>
+        <li><strong>JWT (JSON Web Tokens):</strong> Self-contained tokens with claims, allowing stateless
+          authentication.</li>
+        <li><strong>Mutual TLS (mTLS):</strong> Uses certificates to authenticate both client and server.</li>
+      </ul>
+    </section>
+
+    <!-- Section 6: Secure API Design Considerations -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🛠️</span> Secure API Design Considerations
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Design APIs with the principle of least privilege.</li>
+        <li>Use strong, unique secrets and rotate them regularly.</li>
+        <li>Avoid exposing internal implementation details in API responses.</li>
+        <li>Design APIs to fail securely and provide minimal error information to clients.</li>
+        <li>Use versioning and deprecate insecure endpoints carefully.</li>
+      </ul>
+    </section>
+
+    <!-- Section 7: Handling API Security Breaches -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🚑</span> Handling API Security Breaches
+      </h2>
+      <ol class="list-decimal list-inside space-y-2">
+        <li>Detect breaches quickly through monitoring and alerts.</li>
+        <li>Revoke compromised credentials immediately.</li>
+        <li>Conduct thorough investigation to understand the breach scope.</li>
+        <li>Patch vulnerabilities and improve defenses.</li>
+        <li>Communicate transparently with affected stakeholders.</li>
+      </ol>
+    </section>
+
+    <!-- Section 8: Senior/Lead Considerations in API Security -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">👔</span> What Senior/Lead Engineers Should Focus On
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>
+          <strong>Security Culture & Awareness:</strong> Foster a team culture prioritizing security in API design and
+          development.
+        </li>
+        <li>
+          <strong>Architecture Review:</strong> Ensure API security is integral to architectural decisions, including
+          use of secure gateways,
+          authentication standards, and encryption.
+        </li>
+        <li>
+          <strong>Threat Modeling:</strong> Lead regular threat assessments and identify potential attack vectors in
+          APIs.
+        </li>
+        <li>
+          <strong>Automation:</strong> Implement automated security testing and continuous monitoring tools to detect
+          vulnerabilities early.
+        </li>
+        <li>
+          <strong>Compliance & Governance:</strong> Oversee adherence to relevant security standards and regulations
+          (e.g., OWASP API Security Top 10,
+          GDPR, HIPAA).
+        </li>
+        <li>
+          <strong>Incident Response Planning:</strong> Prepare and maintain response plans for API security incidents.
+        </li>
+        <li>
+          <strong>Mentorship & Training:</strong> Guide junior developers on best practices and emerging security
+          threats.
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
