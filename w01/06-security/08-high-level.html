@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>High-Level View of Security in APIs</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🔒 High-Level View of Security in APIs</h1>
+  </header>
+
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Section: Overview -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🔍</span>
+        <span>Overview</span>
+      </h2>
+      <p>
+        API security is a critical component of modern application architecture. APIs expose data and business logic to
+        external and internal consumers, making them attractive targets for attackers. Securing APIs involves a
+        combination of techniques and best practices to ensure confidentiality, integrity, and availability.
+      </p>
+    </section>
+
+    <!-- Section: Threats to APIs -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>⚠️</span>
+        <span>Common Threats to APIs</span>
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Injection Attacks:</strong> Such as SQL, NoSQL, or command injection that can exploit API
+          parameters.</li>
+        <li><strong>Broken Authentication:</strong> Flaws in authentication can allow attackers to gain unauthorized
+          access.</li>
+        <li><strong>Excessive Data Exposure:</strong> APIs exposing more data than necessary increasing risk of data
+          leaks.</li>
+        <li><strong>Rate Limiting & Throttling Issues:</strong> Absence of controls can lead to abuse or DoS attacks.
+        </li>
+        <li><strong>Security Misconfiguration:</strong> Default settings or improper security headers can be exploited.
+        </li>
+        <li><strong>Mass Assignment:</strong> Attackers modify object properties that were not intended to be changed.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section: Key Security Controls -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🛡️</span>
+        <span>Key Security Controls for APIs</span>
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Authentication & Authorization:</strong> Use OAuth, JWT or API keys to verify user identity and
+          permissions.</li>
+        <li><strong>Input Validation:</strong> Validate all incoming data to prevent injection and other attacks.</li>
+        <li><strong>Encryption:</strong> Use TLS/HTTPS to encrypt data in transit; consider encryption at rest as well.
+        </li>
+        <li><strong>Rate Limiting & Throttling:</strong> Protect APIs against abuse and denial-of-service attacks.</li>
+        <li><strong>Logging and Monitoring:</strong> Keep audit logs of API usage and monitor for suspicious activity.
+        </li>
+        <li><strong>Error Handling:</strong> Avoid exposing sensitive information in error messages.</li>
+        <li><strong>Use of API Gateway:</strong> Centralized control point for security, monitoring, and routing.</li>
+      </ul>
+    </section>
+
+    <!-- Section: Best Practices -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>✅</span>
+        <span>API Security Best Practices</span>
+      </h2>
+      <ol class="list-decimal list-inside space-y-2">
+        <li>Design APIs with the principle of least privilege.</li>
+        <li>Enforce strong authentication and authorization mechanisms.</li>
+        <li>Keep APIs versioned and deprecate insecure versions promptly.</li>
+        <li>Use HTTPS always; never transmit sensitive data over unencrypted channels.</li>
+        <li>Implement proper input validation and sanitize all inputs.</li>
+        <li>Apply rate limiting and quotas to prevent abuse.</li>
+        <li>Secure data storage and encrypt sensitive information.</li>
+        <li>Keep dependencies and libraries up to date.</li>
+        <li>Conduct regular security audits and penetration testing.</li>
+      </ol>
+    </section>
+
+    <!-- Section: Senior/Lead Considerations -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>👔</span>
+        <span>Senior/Lead Must-Know Points</span>
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Architectural Security Decisions:</strong> Design API security architecture that is scalable,
+          maintainable,
+          and aligned with organizational policies.</li>
+        <li><strong>Risk Management:</strong> Identify key risk areas in API usage and enforce mitigations proactively.
+        </li>
+        <li><strong>Secure SDLC Integration:</strong> Embed security checks and testing in the CI/CD pipeline.</li>
+        <li><strong>Cross-Team Collaboration:</strong> Work with product, security, and infrastructure teams to ensure
+          comprehensive API security coverage.</li>
+        <li><strong>Incident Response Preparedness:</strong> Define monitoring, alerting, and rapid response strategies
+          for API breaches or anomalies.</li>
+        <li><strong>Mentoring and Training:</strong> Guide junior developers on secure coding practices and API security
+          principles.</li>
+        <li><strong>Compliance & Governance:</strong> Ensure APIs comply with regulatory requirements (e.g., GDPR,
+          HIPAA).</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
