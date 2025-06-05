@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comprehensive Guide to HTTP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🌐 Hypertext Transfer Protocol (HTTP)</h1>
+  </header>
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🔍 Introduction</h2>
+      <p>HTTP is a stateless, application-layer protocol for distributed and hypermedia information systems. It's the
+        foundation of data communication for the World Wide Web and is considered the de facto standard for
+        client-server resource sharing. Web servers and client applications (browsers) must adhere to the message
+        formats and transmission methods provided in the HTTP specifications. For instance, when we type a URL into a
+        browser, the web server receives an HTTP request directing it to fetch and deliver the specified web page.</p>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">📜 Evolution of HTTP</h2>
+      <p>HTTP has undergone several versions, each introducing improvements to enhance performance and capabilities:</p>
+      <ul class="list-disc pl-6">
+        <li><strong>HTTP/0.9 (1991):</strong> The initial version supporting only the GET method with no headers.</li>
+        <li><strong>HTTP/1.0 (1996):</strong> Introduced headers and support for multiple methods like POST and HEAD.
+        </li>
+        <li><strong>HTTP/1.1 (1997):</strong> Added persistent connections, pipelining, and additional cache control
+          mechanisms.</li>
+        <li><strong>HTTP/2 (2015):</strong> Introduced multiplexing, header compression, and server push to improve
+          performance.</li>
+        <li><strong>HTTP/3 (2022):</strong> Built on QUIC protocol over UDP for faster and more reliable connections.
+        </li>
+      </ul>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🔧 HTTP Methods</h2>
+      <p>HTTP defines several methods to indicate the desired action to be performed on the identified resource:</p>
+      <ul class="list-disc pl-6">
+        <li><strong>GET:</strong> Retrieve data from the server.</li>
+        <li><strong>POST:</strong> Submit data to be processed to the server.</li>
+        <li><strong>PUT:</strong> Update a current resource with new data.</li>
+        <li><strong>DELETE:</strong> Remove a resource from the server.</li>
+        <li><strong>HEAD:</strong> Retrieve headers of a resource.</li>
+        <li><strong>OPTIONS:</strong> Describe the communication options for the target resource.</li>
+        <li><strong>PATCH:</strong> Apply partial modifications to a resource.</li>
+        <li><strong>TRACE:</strong> Perform a message loop-back test along the path to the target resource.</li>
+        <li><strong>CONNECT:</strong> Establish a tunnel to the server identified by the target resource.</li>
+      </ul>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">📦 HTTP Messages</h2>
+      <p>Both HTTP requests and responses consist of two main parts—a header and the body divided by an empty line:</p>
+      <ul class="list-disc pl-6">
+        <li><strong>Request:</strong> Contains a start-line with the HTTP method, address, and protocol version,
+          followed by headers and an optional body.</li>
+        <li><strong>Response:</strong> Begins with a status line including the protocol version, status code, and status
+          message, followed by headers and an optional body.</li>
+      </ul>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">⚙️ HTTP Versions Comparison</h2>
+      <table class="min-w-full table-auto border-collapse border border-gray-300">
+        <thead>
+          <tr>
+            <th class="border border-gray-300 px-4 py-2">Version</th>
+            <th class="border border-gray-300 px-4 py-2">Year</th>
+            <th class="border border-gray-300 px-4 py-2">Key Features</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">HTTP/0.9</td>
+            <td class="border border-gray-300 px-4 py-2">1991</td>
+            <td class="border border-gray-300 px-4 py-2">GET method only, no headers</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">HTTP/1.0</td>
+            <td class="border border-gray-300 px-4 py-2">1996</td>
+            <td class="border border-gray-300 px-4 py-2">Headers, POST and HEAD methods</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">HTTP/1.1</td>
+            <td class="border border-gray-300 px-4 py-2">1997</td>
+            <td class="border border-gray-300 px-4 py-2">Persistent connections, pipelining</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">HTTP/2</td>
+            <td class="border border-gray-300 px-4 py-2">2015</td>
+            <td class="border border-gray-300 px-4 py-2">Multiplexing, header compression</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">HTTP/3</td>
+            <td class="border border-gray-300 px-4 py-2">2022</td>
+            <td class="border border-gray-300 px-4 py-2">QUIC over UDP, faster connections</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🧠 Senior/Lead Engineer Insights</h2>
+      <p>For senior and lead engineers, it's crucial to:</p>
+      <ul class="list-disc pl-6">
+        <li>Understand the implications of choosing different HTTP versions on performance and scalability.</li>
+        <li>Design APIs that leverage HTTP/2 or HTTP/3 features like multiplexing and server push for optimal
+          performance.</li>
+        <li>Implement robust security measures, including HTTPS, to protect data integrity and privacy.</li>
+        <li>Stay informed about emerging protocols and standards to future-proof API designs.</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+</body>
+
+</html>
