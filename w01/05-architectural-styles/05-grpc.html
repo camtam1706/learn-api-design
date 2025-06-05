@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>gRPC Framework - API Design</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">⚙️ gRPC Framework - API Design</h1>
+  </header>
+
+  <!-- Main content -->
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Introduction Section -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🚀</span>
+        <span>Introduction to gRPC</span>
+      </h2>
+      <p>
+        gRPC is a high-performance, open-source framework developed by Google that enables remote procedure calls (RPC)
+        using HTTP/2 as its transport protocol. It allows clients and servers to communicate seamlessly across languages
+        and platforms by defining service methods and message types in Protocol Buffers (protobuf).
+      </p>
+      <p class="mt-2">
+        Designed for microservices and distributed systems, gRPC supports multiple communication patterns including
+        unary,
+        client streaming, server streaming, and bidirectional streaming.
+      </p>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center space-x-2">
+        <span>✨</span>
+        <span>Key Features of gRPC</span>
+      </h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>HTTP/2 Transport:</strong> Enables multiplexing, flow control, header compression, and full-duplex
+          communication.</li>
+        <li><strong>Protocol Buffers:</strong> Efficient binary serialization format with strong typing and backward
+          compatibility.</li>
+        <li><strong>Cross-language Support:</strong> Supports many languages including Go, Java, C++, Python, Node.js,
+          and more.</li>
+        <li><strong>Streaming:</strong> Supports unary calls, client streaming, server streaming, and bidirectional
+          streaming.</li>
+        <li><strong>Pluggable Authentication:</strong> Supports SSL/TLS and token-based authentication mechanisms.</li>
+        <li><strong>Code Generation:</strong> Auto-generates client and server stubs from .proto files.</li>
+      </ul>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🏗️</span>
+        <span>gRPC Architecture</span>
+      </h2>
+      <p>
+        gRPC architecture consists of clients and servers communicating via service definitions declared in Protocol
+        Buffers.
+        The process includes:
+      </p>
+      <ol class="list-decimal pl-6 space-y-2 mt-2">
+        <li><strong>Define Services:</strong> Specify service methods and message types in .proto files.</li>
+        <li><strong>Generate Code:</strong> Use gRPC tools to generate client and server code in the target language.
+        </li>
+        <li><strong>Implement Server:</strong> Develop server-side logic for each service method.</li>
+        <li><strong>Create Client:</strong> Use generated client stubs to call remote methods as if they were local.
+        </li>
+        <li><strong>Communication:</strong> Transport occurs over HTTP/2 with multiplexed streams.</li>
+      </ol>
+    </section>
+
+    <!-- Communication Patterns Section -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🔄</span>
+        <span>Communication Patterns in gRPC</span>
+      </h2>
+      <p>gRPC supports several communication styles between clients and servers:</p>
+      <ul class="list-disc pl-6 space-y-2 mt-2">
+        <li><strong>Unary RPC:</strong> Client sends a single request and receives a single response.</li>
+        <li><strong>Server Streaming RPC:</strong> Client sends a single request and receives a stream of responses.
+        </li>
+        <li><strong>Client Streaming RPC:</strong> Client sends a stream of requests and receives a single response.
+        </li>
+        <li><strong>Bidirectional Streaming RPC:</strong> Both client and server send streams of messages concurrently.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center space-x-2">
+        <span>💡</span>
+        <span>Benefits of Using gRPC</span>
+      </h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Efficient and compact binary serialization leads to better performance and lower bandwidth usage.</li>
+        <li>Strongly typed APIs reduce errors and improve developer productivity.</li>
+        <li>Automatic code generation speeds up development and reduces boilerplate.</li>
+        <li>Built-in support for streaming allows real-time communication.</li>
+        <li>Interoperability across many languages and platforms supports diverse ecosystems.</li>
+        <li>HTTP/2 transport allows multiplexed requests reducing latency and improving throughput.</li>
+      </ul>
+    </section>
+
+    <!-- Challenges Section -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center space-x-2">
+        <span>⚠️</span>
+        <span>Challenges and Considerations</span>
+      </h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>gRPC uses HTTP/2, which may require updated infrastructure (proxies, load balancers) that support it.</li>
+        <li>Binary protocol makes debugging network traffic less human-readable than JSON over REST.</li>
+        <li>Learning curve for Protocol Buffers and tooling can be steep for teams new to gRPC.</li>
+        <li>Limited browser support natively (gRPC-Web is available but adds complexity).</li>
+        <li>Requires code generation step as part of build process, which needs integration in CI/CD pipelines.</li>
+      </ul>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center space-x-2">
+        <span>📌</span>
+        <span>Typical Use Cases</span>
+      </h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Microservices communication where efficiency and scalability are critical.</li>
+        <li>Real-time streaming applications like chat, gaming, or IoT telemetry.</li>
+        <li>Polyglot environments requiring cross-language interoperability.</li>
+        <li>High-performance internal APIs where low latency matters.</li>
+        <li>Mobile and web clients using gRPC-Web for efficient communication.</li>
+      </ul>
+    </section>
+
+    <!-- Senior/Lead Considerations Section -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🧑‍💼</span>
+        <span>Senior/Lead Developer Considerations</span>
+      </h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Infrastructure Readiness:</strong> Ensure all networking components support HTTP/2, including
+          proxies and load balancers.</li>
+        <li><strong>Code Generation Integration:</strong> Set up smooth CI/CD pipelines that handle protobuf compilation
+          and stub generation.</li>
+        <li><strong>API Design Discipline:</strong> Design clear, versioned APIs with backward compatibility in mind to
+          avoid breaking changes.</li>
+        <li><strong>Debugging & Monitoring:</strong> Implement logging, tracing, and monitoring suited for binary
+          protocols and streaming calls.</li>
+        <li><strong>Cross-team Collaboration:</strong> Coordinate with frontend teams (especially when using gRPC-Web)
+          and operations for deployment complexity.</li>
+        <li><strong>Security Best Practices:</strong> Enforce TLS, authentication, and authorization in gRPC services
+          from the start.</li>
+        <li><strong>Training and Documentation:</strong> Provide team training on protobuf, gRPC idioms, and debugging
+          tools.</li>
+        <li><strong>Performance Benchmarking:</strong> Continuously profile and optimize streaming and unary RPCs for
+          latency and resource use.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
