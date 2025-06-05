@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Authentication and Authorization - API Design</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🔐 Authentication and Authorization</h1>
+  </header>
+
+  <!-- Main content -->
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Section: Overview -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🔎</span>
+        <span>Overview</span>
+      </h2>
+      <p>
+        Authentication and authorization are two critical components in securing APIs.
+        Authentication is the process of verifying the identity of a user or system,
+        while authorization determines what an authenticated user is allowed to do.
+      </p>
+    </section>
+
+    <!-- Section: Authentication -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🛂</span>
+        <span>Authentication</span>
+      </h2>
+      <p>
+        Authentication is about verifying who the user or system is. Common methods include:
+      </p>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Basic Authentication:</strong> Uses username and password in HTTP headers (not secure without TLS).
+        </li>
+        <li><strong>Token-Based Authentication:</strong> After login, user receives a token (e.g. JWT) to prove identity
+          in subsequent requests.</li>
+        <li><strong>OAuth:</strong> Delegated access, where users authorize third-party applications to access their
+          resources.</li>
+        <li><strong>Multi-Factor Authentication (MFA):</strong> Combines multiple forms of verification (e.g., password
+          + OTP).</li>
+      </ul>
+      <p>
+        Tokens like JWT (JSON Web Tokens) are popular for stateless authentication, containing claims and expiration
+        information.
+      </p>
+    </section>
+
+    <!-- Section: Authorization -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🔐</span>
+        <span>Authorization</span>
+      </h2>
+      <p>
+        Authorization decides what an authenticated user is allowed to do. Common models include:
+      </p>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Role-Based Access Control (RBAC):</strong> Users are assigned roles, each with permissions.</li>
+        <li><strong>Attribute-Based Access Control (ABAC):</strong> Access decisions based on attributes like user,
+          resource, environment.</li>
+        <li><strong>Access Control Lists (ACLs):</strong> Explicitly define permissions for each user or group on each
+          resource.</li>
+      </ul>
+      <p>
+        Proper authorization ensures principle of least privilege, minimizing the access rights granted.
+      </p>
+    </section>
+
+    <!-- Section: Common Authentication & Authorization Workflows -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>⚙️</span>
+        <span>Common Workflows</span>
+      </h2>
+      <ol class="list-decimal list-inside space-y-2">
+        <li><strong>Login Flow:</strong> User submits credentials → Server verifies → Issues token.</li>
+        <li><strong>Token Validation:</strong> Each API request carries the token → Server validates token and extracts
+          user info.</li>
+        <li><strong>Token Refresh:</strong> Expired tokens can be refreshed via a refresh token to maintain session
+          without re-login.</li>
+        <li><strong>Logout:</strong> Client deletes token; server may also blacklist tokens in some implementations.
+        </li>
+      </ol>
+    </section>
+
+    <!-- Section: Best Practices -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>✅</span>
+        <span>Best Practices</span>
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Always use HTTPS to protect credentials and tokens in transit.</li>
+        <li>Use short-lived access tokens and refresh tokens to reduce risk.</li>
+        <li>Store tokens securely on clients (e.g., HttpOnly cookies).</li>
+        <li>Validate tokens on every request and verify claims.</li>
+        <li>Implement rate limiting and logging for authentication endpoints.</li>
+        <li>Apply the principle of least privilege in authorization policies.</li>
+      </ul>
+    </section>
+
+    <!-- Section: Senior/Lead Considerations -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>👑</span>
+        <span>Senior/Lead Considerations</span>
+      </h2>
+      <ul class="list-disc list-inside space-y-3">
+        <li><strong>Design for Scalability and Security:</strong> Architect authentication & authorization to scale with
+          users and services securely.</li>
+        <li><strong>Token Management Strategy:</strong> Decide between JWT or opaque tokens, refresh token policies, and
+          token revocation mechanisms.</li>
+        <li><strong>Audit and Compliance:</strong> Ensure detailed logging of auth events for auditing and regulatory
+          requirements.</li>
+        <li><strong>Secure Defaults:</strong> Enforce secure configurations by default; avoid leaking sensitive data in
+          tokens.</li>
+        <li><strong>Granular Access Control:</strong> Implement fine-grained authorization, possibly combining RBAC with
+          ABAC for complex policies.</li>
+        <li><strong>Multi-Tenant & Microservices:</strong> Consider how auth integrates across multiple services and
+          tenants, centralizing identity management if needed.</li>
+        <li><strong>Usability and Developer Experience:</strong> Balance security with usability; provide clear API
+          documentation and error messages.</li>
+        <li><strong>Threat Modeling:</strong> Anticipate common threats (token theft, replay attacks, CSRF) and design
+          defenses accordingly.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
