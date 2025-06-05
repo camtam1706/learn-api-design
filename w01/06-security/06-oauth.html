@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OAuth - The Authorization Framework</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🔐 OAuth - The Authorization Framework</h1>
+  </header>
+
+  <!-- Main content -->
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Section 1: Overview -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🌐</span>Overview of OAuth 2.0
+      </h2>
+      <p>
+        OAuth 2.0 is an open standard for access delegation commonly used to grant websites or applications limited
+        access
+        to user information on another service without exposing credentials. It enables third-party applications to
+        obtain
+        delegated access to protected resources by orchestrating a secure token exchange.
+      </p>
+    </section>
+
+    <!-- Section 2: Roles in OAuth -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">👥</span>Key Roles in OAuth 2.0
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Resource Owner:</strong> The user who authorizes an application to access their resources.</li>
+        <li><strong>Client:</strong> The application requesting access on behalf of the resource owner.</li>
+        <li><strong>Authorization Server:</strong> Issues access tokens to the client after authenticating the resource
+          owner and obtaining authorization.</li>
+        <li><strong>Resource Server:</strong> Hosts the protected resources and accepts access tokens to allow access.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section 3: OAuth Authorization Grants -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">📝</span>OAuth 2.0 Authorization Grant Types
+      </h2>
+      <p>OAuth defines several grant types to accommodate different use cases:</p>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Authorization Code Grant:</strong> Used by web apps to obtain an authorization code which is
+          exchanged for an access token.</li>
+        <li><strong>Implicit Grant:</strong> Used by browser-based or mobile apps where tokens are issued directly
+          without an intermediate code.</li>
+        <li><strong>Resource Owner Password Credentials Grant:</strong> Client collects user credentials to exchange for
+          tokens; less recommended due to security concerns.</li>
+        <li><strong>Client Credentials Grant:</strong> Used for machine-to-machine authentication without user
+          involvement.</li>
+        <li><strong>Refresh Token Grant:</strong> Allows clients to obtain new access tokens using a refresh token
+          without re-authenticating the user.</li>
+      </ul>
+    </section>
+
+    <!-- Section 4: Access Tokens -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🔑</span>Access Tokens
+      </h2>
+      <p>
+        Access tokens are credentials used by clients to access protected resources on behalf of the resource owner.
+        They are typically bearer tokens, meaning possession grants access. Tokens have limited lifetimes and scopes
+        restricting what the client can do.
+      </p>
+    </section>
+
+    <!-- Section 5: Refresh Tokens -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">♻️</span>Refresh Tokens
+      </h2>
+      <p>
+        Refresh tokens allow clients to obtain new access tokens without involving the resource owner again.
+        They improve user experience by avoiding repeated logins but require secure storage as they can be used
+        to get fresh tokens.
+      </p>
+    </section>
+
+    <!-- Section 6: Security Considerations -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🛡️</span>Security Best Practices
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Use HTTPS for all OAuth communications to protect tokens and credentials.</li>
+        <li>Prefer Authorization Code Grant with Proof Key for Code Exchange (PKCE) for public clients (mobile, SPA).
+        </li>
+        <li>Limit token scopes and lifetimes to reduce impact of token leaks.</li>
+        <li>Securely store refresh tokens, especially in native apps or browsers.</li>
+        <li>Implement token revocation mechanisms for compromised tokens.</li>
+      </ul>
+    </section>
+
+    <!-- Section 7: OAuth 2.0 Authorization Flow Explanation with Diagram -->
+    <!-- Section 7: OAuth 2.0 Authorization Flow with Facebook Login Example -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-6 flex items-center">
+        <span class="mr-2">🔄</span>OAuth 2.0 Authorization Flow & Facebook Login Example
+      </h2>
+      <p class="mb-4">
+        OAuth 2.0 flow securely delegates access from users to clients without sharing passwords. A common use case is
+        logging in or registering using Facebook OAuth.
+      </p>
+
+      <div
+        class="flex flex-col md:flex-row md:items-center md:justify-between space-y-6 md:space-y-0 md:space-x-4 text-center mb-6">
+
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center space-y-2 max-w-[150px]">
+          <div class="bg-blue-500 text-white font-semibold px-4 py-3 rounded shadow">
+            1. Authorization Request
+          </div>
+          <div class="text-sm text-gray-700">
+            Redirect user to Facebook OAuth URL.
+          </div>
+        </div>
+
+        <!-- Arrow 1 -->
+        <div class="hidden md:flex items-center">
+          <svg class="w-10 h-6 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center space-y-2 max-w-[150px]">
+          <div class="bg-green-500 text-white font-semibold px-4 py-3 rounded shadow">
+            2. User Login & Consent
+          </div>
+          <div class="text-sm text-gray-700">
+            User logs in and authorizes app on Facebook.
+          </div>
+        </div>
+
+        <!-- Arrow 2 -->
+        <div class="hidden md:flex items-center">
+          <svg class="w-10 h-6 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center space-y-2 max-w-[150px]">
+          <div class="bg-yellow-500 text-white font-semibold px-4 py-3 rounded shadow">
+            3. Authorization Code
+          </div>
+          <div class="text-sm text-gray-700">
+            Facebook redirects back with code.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Second Row -->
+      <div
+        class="flex flex-col md:flex-row md:items-center md:justify-between space-y-6 md:space-y-0 md:space-x-4 text-center">
+
+        <!-- Step 4 -->
+        <div class="flex flex-col items-center space-y-2 max-w-[150px]">
+          <div class="bg-purple-600 text-white font-semibold px-4 py-3 rounded shadow">
+            4. Exchange Token
+          </div>
+          <div class="text-sm text-gray-700">
+            Server exchanges code for access token.
+          </div>
+        </div>
+
+        <!-- Arrow 3 -->
+        <div class="hidden md:flex items-center">
+          <svg class="w-10 h-6 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="flex flex-col items-center space-y-2 max-w-[150px]">
+          <div class="bg-red-500 text-white font-semibold px-4 py-3 rounded shadow">
+            5. Access User Info
+          </div>
+          <div class="text-sm text-gray-700">
+            Use token to fetch user profile.
+          </div>
+        </div>
+
+      </div>
+
+      <p class="mt-6 text-gray-700">
+        Example Facebook OAuth URL for step 1:
+      </p>
+      <pre class="bg-gray-100 rounded p-4 overflow-x-auto text-sm">
+https://www.facebook.com/v14.0/dialog/oauth?
+  client_id=YOUR_APP_ID
+  &redirect_uri=https://yourapp.com/callback
+  &state=YOUR_CSRF_TOKEN
+  &scope=email,public_profile
+  &response_type=code
+  &auth_type=rerequest
+  </pre>
+
+      <p class="mt-4 text-gray-700">
+        After redirect, your backend exchanges the code for an access token by calling Facebook's token endpoint:
+      </p>
+      <pre class="bg-gray-100 rounded p-4 overflow-x-auto text-sm">
+POST https://graph.facebook.com/v14.0/oauth/access_token
+  ?client_id=YOUR_APP_ID
+  &redirect_uri=https://yourapp.com/callback
+  &client_secret=YOUR_APP_SECRET
+  &code=AUTHORIZATION_CODE
+  </pre>
+
+      <p class="mt-4 text-gray-700">
+        Once the access token is received, you can call Facebook's Graph API to fetch user information like email and
+        name to create or authenticate the user in your system.
+      </p>
+    </section>
+
+    <!-- Section 7: Senior/Lead Notes -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <span class="mr-2">🚀</span>Senior / Lead Considerations
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Design OAuth flows with security and usability balance, tailoring grant types to client capabilities.</li>
+        <li>Ensure your team understands OAuth roles and potential attack vectors like token leakage or CSRF.</li>
+        <li>Implement monitoring and alerting on abnormal token usage and authentication failures.</li>
+        <li>Keep updated on OAuth standards, especially extensions and improvements like OAuth 2.1 or emerging specs.
+        </li>
+        <li>Guide integration of OAuth with internal authentication systems and microservices securely.</li>
+        <li>Review client and server code to enforce least privilege principles and secure token storage.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
