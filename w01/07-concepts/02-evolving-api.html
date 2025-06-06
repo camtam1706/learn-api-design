@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evolving an API Design</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🔄 Evolving an API Design</h1>
+  </header>
+
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Section 1: Introduction to API Evolution -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-2">🌱</span> 1. Introduction to API Evolution
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>APIs must evolve to support new business requirements, user needs, and technology trends while maintaining
+          backward compatibility for existing consumers.</li>
+        <li>Careful API evolution avoids breaking existing clients and preserves trust in the platform.</li>
+        <li>Well-planned evolution keeps the API sustainable, flexible, and relevant as systems grow.</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: What Drives API Evolution? -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-2">⚡</span> 2. What Drives API Evolution?
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Changing business requirements or product features.</li>
+        <li>Technology upgrades (new frameworks, databases, protocols).</li>
+        <li>User feedback and demands for improvements or new capabilities.</li>
+        <li>Security and compliance requirements.</li>
+        <li>Performance, scalability, and maintainability goals.</li>
+      </ul>
+    </section>
+
+    <!-- Section 3: Types of Changes in API Evolution -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-2">🔧</span> 3. Types of Changes in API Evolution
+      </h2>
+      <div class="space-y-2">
+        <div>
+          <strong>Non-breaking changes (Backward-compatible):</strong>
+          <ul class="list-disc list-inside ml-6">
+            <li>Adding new optional fields or endpoints.</li>
+            <li>Extending enum values.</li>
+            <li>Allowing additional HTTP methods.</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Breaking changes (Backward-incompatible):</strong>
+          <ul class="list-disc list-inside ml-6">
+            <li>Removing or renaming fields/endpoints.</li>
+            <li>Changing response structure or data types.</li>
+            <li>Modifying authentication or required parameters.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Strategies for Safe API Evolution -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-2">🛡️</span> 4. Strategies for Safe API Evolution
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Deprecation Policy:</strong> Mark features as deprecated before removal. Communicate deprecation
+          clearly and provide migration guides.</li>
+        <li><strong>Versioning:</strong> Use versioning to introduce breaking changes (URI versioning, custom headers,
+          or media types). This isolates new changes from current consumers.</li>
+        <li><strong>Backward Compatibility:</strong> Prioritize additive changes that do not break existing clients.
+        </li>
+        <li><strong>Comprehensive Documentation:</strong> Maintain up-to-date docs to explain changes, impacts, and
+          recommended usage.</li>
+        <li><strong>Testing & Monitoring:</strong> Use automated tests and monitor API usage to detect potential
+          breakage.</li>
+      </ul>
+    </section>
+
+    <!-- Section 5: API Versioning Approaches -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-2">🔢</span> 5. API Versioning Approaches
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>URI Path Versioning:</strong> e.g., <code>/v1/users</code>, most common and easiest to implement.
+        </li>
+        <li><strong>Custom Headers:</strong> Use custom HTTP headers (e.g., <code>X-API-Version</code>).</li>
+        <li><strong>Content Negotiation:</strong> Use media types (e.g.,
+          <code>Accept: application/vnd.company.v2+json</code>).</li>
+        <li><strong>Best Practices:</strong> Version only when introducing breaking changes, avoid frequent version
+          increments.</li>
+      </ul>
+    </section>
+
+    <!-- Section 6: Communicating API Changes -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-2">📢</span> 6. Communicating API Changes
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Provide clear changelogs and documentation updates for every release.</li>
+        <li>Announce deprecations and breaking changes early via email, dashboard, or developer portal.</li>
+        <li>Support migration guides and code samples to help consumers adapt.</li>
+        <li>Establish SLAs and timelines for deprecated features.</li>
+      </ul>
+    </section>
+
+    <!-- Section 7: Best Practices for API Evolution -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-2">✨</span> 7. Best Practices for API Evolution
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Design APIs with change in mind—plan for extensibility and modularity.</li>
+        <li>Use feature flags and A/B testing for gradual rollouts.</li>
+        <li>Automate regression testing for new releases.</li>
+        <li>Actively engage API consumers and gather feedback before rolling out major changes.</li>
+        <li>Document deprecations and removals explicitly.</li>
+      </ul>
+    </section>
+
+    <!-- Section 8: Common Mistakes in API Evolution -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-2">🚫</span> 8. Common Mistakes in API Evolution
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Breaking changes without prior warning or migration path.</li>
+        <li>Lack of clear versioning strategy, causing client confusion.</li>
+        <li>Poor or outdated documentation.</li>
+        <li>Removing features or endpoints that are still in use.</li>
+        <li>Ignoring backward compatibility in favor of rapid changes.</li>
+      </ul>
+    </section>
+
+    <!-- Section 9: What Senior/Lead Should Pay Attention To -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-2">🧑‍💼</span> 9. What Senior/Lead Should Pay Attention To
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Establish and enforce API governance policies for evolution, versioning, and deprecation.</li>
+        <li>Oversee communication and change management processes to minimize business and technical disruptions.</li>
+        <li>Invest in automated test coverage, monitoring, and observability for API changes.</li>
+        <li>Ensure stakeholder alignment and proper communication with internal and external consumers.</li>
+        <li>Continuously review and improve documentation and migration guides.</li>
+        <li>Drive a culture of backward compatibility and consumer-centric evolution.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+</body>
+
+</html>
