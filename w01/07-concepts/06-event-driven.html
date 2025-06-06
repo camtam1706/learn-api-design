@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event-Driven Architecture Protocols</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">⚡ Event-Driven Architecture Protocols</h1>
+  </header>
+
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+    <!-- Motivation -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🎯 Motivation</h2>
+      <p>
+        Traditional HTTP protocols are not ideal for real-time applications like instant messaging or live streaming due
+        to their request-response nature. Techniques like short polling and long polling have limitations, such as
+        unnecessary requests and inefficient connections. Event-driven architecture (EDA) addresses these issues by
+        allowing clients to receive data automatically when events occur, eliminating the need for constant polling.
+      </p>
+    </section>
+
+    <!-- Event-Driven Architecture -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🏗️ Event-Driven Architecture</h2>
+      <p>
+        EDA focuses on events to drive data and application behavior. Clients subscribe to specific topics and receive
+        updates when events are triggered, without explicitly requesting data. This asynchronous approach contrasts with
+        traditional REST APIs and enhances scalability and responsiveness.
+      </p>
+    </section>
+
+    <!-- Types of Event-Driven Protocols -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🔌 Types of Event-Driven Protocols</h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>
+          <strong>Webhooks:</strong> Server-side callbacks that notify clients about events by sending HTTP POST
+          requests to a specified URL. Commonly used for real-time notifications.
+        </li>
+        <li>
+          <strong>Server-Sent Events (SSE):</strong> Allows servers to push updates to clients over a single HTTP
+          connection. Suitable for applications like live feeds.
+        </li>
+        <li>
+          <strong>WebSub (Pub-Sub):</strong> A publish-subscribe protocol where clients subscribe to topics and receive
+          updates when events occur. Enhances decoupling between publishers and subscribers.
+        </li>
+        <li>
+          <strong>WebSocket:</strong> Enables full-duplex communication between client and server over a single,
+          persistent connection. Ideal for real-time applications like chat systems.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Considerations for Senior/Lead Engineers -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🧠 Considerations for Senior/Lead Engineers</h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>
+          <strong>Protocol Selection:</strong> Choose the appropriate event-driven protocol based on application
+          requirements, scalability needs, and client capabilities.
+        </li>
+        <li>
+          <strong>Security:</strong> Implement authentication and authorization mechanisms to secure event channels and
+          prevent unauthorized access.
+        </li>
+        <li>
+          <strong>Error Handling:</strong> Design robust error-handling strategies to manage failures in event delivery
+          and processing.
+        </li>
+        <li>
+          <strong>Monitoring and Logging:</strong> Establish comprehensive monitoring and logging to track event flows,
+          detect anomalies, and facilitate debugging.
+        </li>
+        <li>
+          <strong>Scalability:</strong> Ensure the architecture can handle increased load by leveraging scalable
+          infrastructure and load balancing techniques.
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+</body>
+
+</html>
