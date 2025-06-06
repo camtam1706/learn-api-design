@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Versioning</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🔢 API Versioning - Best Practices & Strategies</h1>
+  </header>
+
+  <!-- Main content -->
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- 1. What is API Versioning? -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-3 text-blue-600">1️⃣</span>
+        <span>What is API Versioning?</span>
+      </h2>
+      <p>
+        API versioning is the practice of managing changes to your API without disrupting existing client
+        integrations. As APIs evolve, changes such as adding, modifying, or removing features can break client
+        applications if not handled properly. Versioning provides a way to introduce non-backward-compatible
+        changes while maintaining support for older versions, ensuring stability and reliability for users.
+      </p>
+    </section>
+
+    <!-- 2. Why Version APIs? -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-3 text-blue-600">2️⃣</span>
+        <span>Why Version APIs?</span>
+      </h2>
+      <ul class="list-disc pl-5 space-y-1">
+        <li>Allows for iterative development and innovation without breaking existing clients.</li>
+        <li>Supports backward compatibility and smooth migration paths.</li>
+        <li>Enables quick response to changing business requirements and security needs.</li>
+        <li>Helps maintain trust and stability for developers consuming your API.</li>
+      </ul>
+    </section>
+
+    <!-- 3. Types of API Changes -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-3 text-blue-600">3️⃣</span>
+        <span>Types of API Changes</span>
+      </h2>
+      <ul class="list-disc pl-5 space-y-1">
+        <li>
+          <strong>Backward-compatible changes:</strong> Additive changes such as new endpoints, fields, or
+          optional parameters that do not break existing clients.
+        </li>
+        <li>
+          <strong>Backward-incompatible (breaking) changes:</strong> Modifications like removing or renaming
+          endpoints, changing response structure, or altering required parameters that could break existing
+          clients.
+        </li>
+      </ul>
+    </section>
+
+    <!-- 4. Versioning Strategies -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-3 text-blue-600">4️⃣</span>
+        <span>Versioning Strategies</span>
+      </h2>
+      <div class="space-y-4">
+        <div>
+          <span class="font-semibold text-blue-600">A. URI Versioning</span>
+          <ul class="list-disc pl-7 mt-1">
+            <li>Include the version directly in the URL (e.g., <code>/v1/users</code>).</li>
+            <li>Most common and visible method.</li>
+            <li><strong>Pros:</strong> Easy to understand and use; version is explicit.</li>
+            <li><strong>Cons:</strong> Can lead to duplicated routes and maintenance overhead.</li>
+          </ul>
+        </div>
+        <div>
+          <span class="font-semibold text-blue-600">B. Query Parameter Versioning</span>
+          <ul class="list-disc pl-7 mt-1">
+            <li>Version specified as a URL query parameter (e.g., <code>/users?version=1</code>).</li>
+            <li><strong>Pros:</strong> Flexible for clients.</li>
+            <li><strong>Cons:</strong> Less discoverable; can be less RESTful.</li>
+          </ul>
+        </div>
+        <div>
+          <span class="font-semibold text-blue-600">C. Header Versioning</span>
+          <ul class="list-disc pl-7 mt-1">
+            <li>Version is passed in a custom HTTP header (e.g., <code>X-API-Version: 1</code>).</li>
+            <li><strong>Pros:</strong> Clean URLs; flexible for different consumers.</li>
+            <li><strong>Cons:</strong> Not visible in endpoint documentation or browser; can be missed by
+              caching proxies.</li>
+          </ul>
+        </div>
+        <div>
+          <span class="font-semibold text-blue-600">D. Media Type (Accept Header) Versioning</span>
+          <ul class="list-disc pl-7 mt-1">
+            <li>Use custom media types in the <code>Accept</code> header (e.g.,
+              <code>application/vnd.myapi.v1+json</code>).
+            </li>
+            <li><strong>Pros:</strong> Enables content negotiation; aligns with REST principles.</li>
+            <li><strong>Cons:</strong> Increases complexity for clients and servers.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Best Practices for API Versioning -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-3 text-blue-600">5️⃣</span>
+        <span>Best Practices for API Versioning</span>
+      </h2>
+      <ul class="list-disc pl-5 space-y-1">
+        <li>Version only when introducing breaking changes.</li>
+        <li>Keep changes backward compatible as long as possible.</li>
+        <li>Clearly document deprecated and supported versions.</li>
+        <li>Communicate end-of-life (EOL) timelines for old versions.</li>
+        <li>Encourage clients to migrate to the latest version.</li>
+        <li>Use semantic versioning (v1, v2, etc.) and avoid dates or ambiguous labels.</li>
+        <li>Maintain consistent versioning across all endpoints.</li>
+        <li>Automate testing and monitoring across versions to ensure reliability.</li>
+      </ul>
+    </section>
+
+    <!-- 6. Deprecation and Sunsetting Strategies -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-3 text-blue-600">6️⃣</span>
+        <span>Deprecation and Sunsetting Strategies</span>
+      </h2>
+      <ul class="list-disc pl-5 space-y-1">
+        <li>Mark outdated versions as deprecated in documentation and API responses.</li>
+        <li>Provide clear migration guides and tools for clients.</li>
+        <li>Set EOL dates and notify users well in advance.</li>
+        <li>Monitor usage of deprecated versions and support clients during migration.</li>
+        <li>Gradually remove support for deprecated versions following a scheduled plan.</li>
+      </ul>
+    </section>
+
+    <!-- 7. Versioning in GraphQL & gRPC -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-3 text-blue-600">7️⃣</span>
+        <span>Versioning in GraphQL and gRPC</span>
+      </h2>
+      <div class="mb-3">
+        <span class="font-semibold">GraphQL:</span>
+        <ul class="list-disc pl-7 mt-1">
+          <li>GraphQL APIs typically avoid explicit versioning. Instead, changes are managed through schema
+            evolution (adding fields, deprecating old ones).</li>
+          <li>Breaking changes should be rare and require careful planning.</li>
+        </ul>
+      </div>
+      <div>
+        <span class="font-semibold">gRPC:</span>
+        <ul class="list-disc pl-7 mt-1">
+          <li>gRPC supports backward-compatible schema evolution via Protocol Buffers (Protobufs).</li>
+          <li>Best practice is to add fields, but not remove or change the meaning of existing ones.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8. Real-world Versioning Example -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-3 text-blue-600">8️⃣</span>
+        <span>Real-world Example</span>
+      </h2>
+      <p>
+        <strong>Example (URI versioning):</strong>
+        <br />
+        <code>GET /v1/products</code> <br />
+        <code>GET /v2/products</code>
+      </p>
+      <ul class="list-disc pl-5 mt-3">
+        <li><strong>v1:</strong> Returns basic product info (name, price).</li>
+        <li><strong>v2:</strong> Adds more details (inventory, supplier info), possibly changes response shape.
+        </li>
+      </ul>
+      <div class="mt-2">
+        <span class="font-semibold">Transition plan:</span>
+        <ul class="list-disc pl-7">
+          <li>Support both versions in parallel for a time.</li>
+          <li>Deprecate v1, announce EOL, provide migration guide.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9. Senior/Lead Notes -->
+    <section class="bg-white p-6 rounded-lg shadow border-2 border-indigo-400">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-3 text-indigo-600">💡</span>
+        <span>Senior/Lead Notes</span>
+      </h2>
+      <ul class="list-disc pl-5 space-y-1">
+        <li>Design APIs to minimize the need for breaking changes. Prioritize backward compatibility.</li>
+        <li>Establish and enforce versioning policies across teams and products.</li>
+        <li>Automate deprecation notifications and usage tracking for old API versions.</li>
+        <li>Involve stakeholders and communicate versioning policies clearly (devs, business, clients).</li>
+        <li>Monitor API usage to identify dependencies on deprecated versions early.</li>
+        <li>Prepare robust migration documentation and tools for clients.</li>
+        <li>Coordinate EOL and migration timelines to minimize business impact.</li>
+        <li>Integrate versioning support into CI/CD, monitoring, and incident response processes.</li>
+        <li>Document all breaking changes and their justifications for future reference and audits.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+</body>
+
+</html>
