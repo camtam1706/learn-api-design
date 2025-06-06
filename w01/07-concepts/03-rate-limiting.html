@@ -46,55 +46,10 @@
       </ul>
     </section>
 
-    <!-- 3. Common Rate Limiting Algorithms -->
+    <!-- 3. Where to Apply Rate Limiting -->
     <section class="bg-white p-6 rounded-lg shadow">
       <h2 class="flex items-center text-2xl font-semibold mb-4">
-        <span class="mr-3">🧮</span>3. Common Rate Limiting Algorithms
-      </h2>
-      <div class="space-y-4">
-        <div>
-          <h3 class="font-bold mb-1">a) Fixed Window Counter</h3>
-          <ul class="list-disc pl-7">
-            <li>Counts requests in fixed periods (e.g., every minute).</li>
-            <li>Simple, but can cause burst traffic at window edges ("reset problem").</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-bold mb-1">b) Sliding Window Log</h3>
-          <ul class="list-disc pl-7">
-            <li>Keeps a timestamped log of each request and only counts requests within the current sliding window.</li>
-            <li>More precise, but requires more storage/memory.</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-bold mb-1">c) Sliding Window Counter</h3>
-          <ul class="list-disc pl-7">
-            <li>Improvement over fixed window by interpolating between two fixed windows.</li>
-            <li>Balances precision and performance.</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-bold mb-1">d) Token Bucket</h3>
-          <ul class="list-disc pl-7">
-            <li>Tokens are added to a bucket at a steady rate; each request consumes a token.</li>
-            <li>Allows burst traffic up to the bucket size but controls average rate over time.</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-bold mb-1">e) Leaky Bucket</h3>
-          <ul class="list-disc pl-7">
-            <li>Requests are queued and processed at a fixed rate.</li>
-            <li>Excess requests are dropped if the bucket is full.</li>
-            <li>Enforces a steady flow, smoothing out bursts.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. Where to Apply Rate Limiting -->
-    <section class="bg-white p-6 rounded-lg shadow">
-      <h2 class="flex items-center text-2xl font-semibold mb-4">
-        <span class="mr-3">🌎</span>4. Where to Apply Rate Limiting?
+        <span class="mr-3">🌎</span>3. Where to Apply Rate Limiting?
       </h2>
       <ul class="list-disc pl-7 space-y-2">
         <li><strong>API Gateway/Proxy Layer:</strong> Most common place, as it sees all incoming requests.</li>
@@ -105,17 +60,18 @@
       </ul>
     </section>
 
-    <!-- 5. Implementation Best Practices -->
+    <!-- 4. Implementation Best Practices -->
     <section class="bg-white p-6 rounded-lg shadow">
       <h2 class="flex items-center text-2xl font-semibold mb-4">
-        <span class="mr-3">🔧</span>5. Implementation Best Practices
+        <span class="mr-3">🔧</span>4. Implementation Best Practices
       </h2>
       <ul class="list-disc pl-7 space-y-2">
         <li>Rate limit by <strong>IP, user, or API key</strong> depending on the use case.</li>
         <li>Use <strong>standard HTTP status codes</strong> like <code>429 Too Many Requests</code> for rejected
           requests.</li>
         <li>Return <strong>rate limit headers</strong> to clients (<code>X-RateLimit-Limit</code>,
-          <code>X-RateLimit-Remaining</code>, <code>X-RateLimit-Reset</code>).</li>
+          <code>X-RateLimit-Remaining</code>, <code>X-RateLimit-Reset</code>).
+        </li>
         <li>Consider <strong>soft limits</strong> with warnings before enforcement.</li>
         <li>Document rate limits clearly in API docs.</li>
         <li>Be aware of <strong>distributed systems challenges</strong> (replication, consistency, clock drift).</li>
@@ -123,10 +79,10 @@
       </ul>
     </section>
 
-    <!-- 6. Dealing with Distributed Rate Limiting -->
+    <!-- 5. Dealing with Distributed Rate Limiting -->
     <section class="bg-white p-6 rounded-lg shadow">
       <h2 class="flex items-center text-2xl font-semibold mb-4">
-        <span class="mr-3">🌐</span>6. Distributed Rate Limiting Challenges
+        <span class="mr-3">🌐</span>5. Distributed Rate Limiting Challenges
       </h2>
       <ul class="list-disc pl-7 space-y-2">
         <li>Harder to enforce consistent limits in distributed API gateways or load-balanced environments.</li>
@@ -136,10 +92,10 @@
       </ul>
     </section>
 
-    <!-- 7. Handling Rate Limit Exceedance (429) -->
+    <!-- 6. Handling Rate Limit Exceedance (429) -->
     <section class="bg-white p-6 rounded-lg shadow">
       <h2 class="flex items-center text-2xl font-semibold mb-4">
-        <span class="mr-3">⚠️</span>7. What Happens When Rate Limit is Exceeded?
+        <span class="mr-3">⚠️</span>6. What Happens When Rate Limit is Exceeded?
       </h2>
       <ul class="list-disc pl-7 space-y-2">
         <li>API should return <code>429 Too Many Requests</code> status code.</li>
@@ -149,10 +105,10 @@
       </ul>
     </section>
 
-    <!-- 8. Real-World Example: GitHub API Rate Limiting -->
+    <!-- 7. Real-World Example: GitHub API Rate Limiting -->
     <section class="bg-white p-6 rounded-lg shadow">
       <h2 class="flex items-center text-2xl font-semibold mb-4">
-        <span class="mr-3">🛠️</span>8. Real-World Example: GitHub API
+        <span class="mr-3">🛠️</span>7. Real-World Example: GitHub API
       </h2>
       <ul class="list-disc pl-7 space-y-2">
         <li>GitHub enforces <strong>different limits</strong> for authenticated vs. unauthenticated users (e.g., 5,000
@@ -165,14 +121,148 @@
           </ul>
         </li>
         <li>When the limit is exceeded, a <code>403 Forbidden</code> or <code>429</code> is returned with a
-          <code>Retry-After</code> header.</li>
+          <code>Retry-After</code> header.
+        </li>
       </ul>
     </section>
 
-    <!-- 9. Senior/Lead Notes: What to Watch Out For -->
+    <!-- 8. Compare: AWS Services vs. Custom Implementation -->
     <section class="bg-white p-6 rounded-lg shadow">
       <h2 class="flex items-center text-2xl font-semibold mb-4">
-        <span class="mr-3">👔</span>9. Senior/Lead Focus: Strategic Considerations
+        <span class="mr-3">⚖️</span>8. AWS Services vs. Custom Implementation
+      </h2>
+      <p class="mb-4">
+        Choosing between using AWS-managed services like API Gateway/WAF and implementing your own rate limiting logic
+        depends on your scalability, cost, and control requirements.
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm text-left border border-gray-300">
+          <thead class="bg-gray-100 font-semibold">
+            <tr>
+              <th class="py-2 px-4 border">Criteria</th>
+              <th class="py-2 px-4 border">AWS Managed Services</th>
+              <th class="py-2 px-4 border">Custom Implementation</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white">
+            <tr class="border-t">
+              <td class="py-2 px-4 border">Setup</td>
+              <td class="py-2 px-4 border">Quick, low-code</td>
+              <td class="py-2 px-4 border">Requires design & infra</td>
+            </tr>
+            <tr class="border-t">
+              <td class="py-2 px-4 border">Performance</td>
+              <td class="py-2 px-4 border">Higher latency (50-100ms+)</td>
+              <td class="py-2 px-4 border">Lower latency (1-10ms)</td>
+            </tr>
+            <tr class="border-t">
+              <td class="py-2 px-4 border">Scalability</td>
+              <td class="py-2 px-4 border">Auto-scaling globally</td>
+              <td class="py-2 px-4 border">Needs custom infra scaling</td>
+            </tr>
+            <tr class="border-t">
+              <td class="py-2 px-4 border">Cost</td>
+              <td class="py-2 px-4 border">$0.90-$3.50 per million requests</td>
+              <td class="py-2 px-4 border">Lower at scale (Redis/nginx based)</td>
+            </tr>
+            <tr class="border-t">
+              <td class="py-2 px-4 border">Flexibility</td>
+              <td class="py-2 px-4 border">Limited to AWS features</td>
+              <td class="py-2 px-4 border">Highly customizable logic</td>
+            </tr>
+            <tr class="border-t">
+              <td class="py-2 px-4 border">Monitoring</td>
+              <td class="py-2 px-4 border">Built-in (CloudWatch, Logs)</td>
+              <td class="py-2 px-4 border">Custom setup needed</td>
+            </tr>
+            <tr class="border-t">
+              <td class="py-2 px-4 border">Best for</td>
+              <td class="py-2 px-4 border">MVPs, simple APIs, fast integration</td>
+              <td class="py-2 px-4 border">High-scale apps, full control needs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-4">
+        <p><strong>Recommendation:</strong> Use AWS-managed solutions for ease and rapid deployment in early-stage or
+          small-scale projects. For high-volume traffic, custom implementations using Redis or NGINX provide better
+          performance and cost-efficiency.</p>
+      </div>
+    </section>
+
+    <!-- 9. Custom Rate Limiting: Algorithms & Implementation Tips -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="flex items-center text-2xl font-semibold mb-4">
+        <span class="mr-3">🛠️</span>9. Custom Rate Limiting: Algorithms & Implementation Tips
+      </h2>
+
+      <p class="mb-4">If you choose to build your own rate limiter, here are commonly used algorithms and practical
+        approaches to implement them:</p>
+
+      <ul class="list-disc pl-7 space-y-4">
+
+        <li>
+          <strong>Fixed Window Counter</strong><br />
+          Simple counting of requests in discrete time blocks (e.g., 1 min).<br />
+          <span class="text-sm text-gray-600">Example: store a counter per user/IP in Redis with TTL = 60s.</span>
+        </li>
+
+        <li>
+          <strong>Sliding Window Log</strong><br />
+          Stores timestamps of each request, removes old ones on each new request.<br />
+          <span class="text-sm text-gray-600">Useful for high-accuracy but costly in memory if high throughput.</span>
+        </li>
+
+        <li>
+          <strong>Sliding Window Counter</strong><br />
+          Interpolates between two fixed windows for better accuracy and reduced memory.<br />
+          <span class="text-sm text-gray-600">Good balance between Fixed Window and Log.</span>
+        </li>
+
+        <li>
+          <strong>Token Bucket</strong><br />
+          Tokens are refilled at a fixed rate. Each request consumes a token.<br />
+          <span class="text-sm text-gray-600">Allows burst traffic. Easy to implement with Redis `INCR` and Lua
+            script.</span>
+        </li>
+
+        <li>
+          <strong>Leaky Bucket</strong><br />
+          Requests enter a queue and are processed at a fixed rate. Overflow requests are dropped.<br />
+          <span class="text-sm text-gray-600">Great for smoothing spikes, but needs queueing infrastructure.</span>
+        </li>
+
+      </ul>
+
+      <div class="mt-6">
+        <h3 class="font-bold mb-2 text-lg">🔧 How to Implement (Tech Stack Examples)</h3>
+        <ul class="list-disc pl-7 space-y-2 text-sm">
+          <li><strong>Redis + Lua script:</strong> For atomic token/counter management in distributed systems.</li>
+          <li><strong>ExpressJS/NestJS middleware:</strong> Handle request count per user/IP in app memory or Redis.
+          </li>
+          <li><strong>NGINX with limit_req module:</strong> Declarative rate limiting at reverse proxy level.</li>
+          <li><strong>Envoy proxy or Traefik:</strong> Powerful modern service proxies with built-in rate limiting.</li>
+        </ul>
+      </div>
+
+      <div class="mt-6">
+        <h3 class="font-bold mb-2 text-lg">💡 Best Practices for Custom Implementation</h3>
+        <ul class="list-disc pl-7 text-sm space-y-1">
+          <li>Always store request state in shared store (e.g., Redis) for distributed environments.</li>
+          <li>Use expiration (TTL) or cleanup for sliding logs to avoid memory leaks.</li>
+          <li>Return 429 status with Retry-After headers for clarity.</li>
+          <li>Provide observability (metrics, logs) for tuning and debugging.</li>
+          <li>Support whitelisting (internal IPs, premium users).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 10. Senior/Lead Notes: What to Watch Out For -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="flex items-center text-2xl font-semibold mb-4">
+        <span class="mr-3">👔</span>10. Senior/Lead Focus: Strategic Considerations
       </h2>
       <ul class="list-disc pl-7 space-y-2">
         <li>Design for <strong>scalability</strong>: Use stateless, distributed-friendly algorithms (e.g., token bucket
