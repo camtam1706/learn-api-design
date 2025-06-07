@@ -239,6 +239,49 @@
     </section>
 
     <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🚧 Limitations of Idempotency in Real-World Scenarios</h2>
+      <p class="mb-4">
+        While idempotency is a powerful tool in API design to prevent duplicated operations, it does not fully protect
+        against users with malicious intent who comply with technical rules but exploit business logic.
+      </p>
+
+      <p class="mb-4">
+        For example, a user can register multiple accounts using different but valid emails or phone numbers (e.g.,
+        disposable email services or virtual numbers). In such cases, idempotency and even rate limiting become
+        ineffective because each request is technically valid and unique.
+      </p>
+
+      <h3 class="text-lg font-medium mt-6 mb-2">🛡️ Defensive Strategies Beyond Idempotency</h3>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Validation of Identity:</strong> Use verified emails, OTP for phone, or government ID for KYC (Know
+          Your Customer).</li>
+        <li><strong>Device Fingerprinting:</strong> Track devices to identify suspicious repeated registrations.</li>
+        <li><strong>Behavioral Analytics:</strong> Monitor click rates, action intervals, and usage patterns to detect
+          anomalies.</li>
+        <li><strong>Machine Learning Detection:</strong> Train models to classify spam/bot behavior and flag potential
+          abuse.</li>
+        <li><strong>Reputation Throttling:</strong> Apply stricter limits to new or untrusted users based on account
+          age, behavior, or past violations.</li>
+        <li><strong>Soft Blocking:</strong> Accept requests silently but block downstream effects (e.g., shadow
+          banning).</li>
+        <li><strong>CAPTCHA or Email Challenge:</strong> Add friction to actions when suspicious behavior is detected.
+        </li>
+      </ul>
+
+      <h3 class="text-lg font-medium mt-6 mb-2">🔍 Senior/Lead Takeaway</h3>
+      <p class="mb-4">
+        As a senior or tech lead, it's essential to understand that idempotency is just one layer in a multi-layered
+        defense model. Systems must be designed with both technical safeguards and business-aware logic to defend
+        against users who game the system legally.
+      </p>
+
+      <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-4 text-sm">
+        <strong>Tip:</strong> Treat <em>idempotency</em> as your first defense, not your last. Build layers of
+        verification, monitoring, and anomaly detection around it.
+      </div>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
       <h2 class="text-2xl font-semibold mb-4">🧠 Considerations for Senior/Lead Developers</h2>
       <p>
         Senior and lead developers should pay special attention to the following aspects when designing
