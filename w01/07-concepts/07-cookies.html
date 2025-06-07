@@ -13,7 +13,6 @@
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
     <h1 class="text-3xl font-bold animate-pulse mb-2">🍪 Cookies &amp; Sessions in API Design</h1>
-    <p class="text-lg opacity-90">Stateful User Management for Web Applications</p>
   </header>
 
   <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
@@ -46,7 +45,8 @@
       <ol class="list-decimal pl-6 space-y-2">
         <li>The server sends a <code>Set-Cookie</code> header in the HTTP response.</li>
         <li>The browser stores the cookie and includes it in subsequent requests to the same domain via the
-          <code>Cookie</code> header.</li>
+          <code>Cookie</code> header.
+        </li>
         <li>Cookies can store small amounts of data: session identifiers, preferences, tracking info, etc.</li>
       </ol>
       <p class="mt-2">Sample header:</p>
@@ -140,19 +140,46 @@
     </section>
 
     <!-- 7. Use Cases and When to Use Cookies/Sessions -->
+    <!-- 7. Typical Use Cases: When to Use Cookies vs Sessions -->
     <section class="bg-white p-6 rounded-lg shadow">
       <h2 class="text-2xl font-semibold flex items-center mb-4">
-        <span class="mr-3">🛠️</span> 7. Typical Use Cases
+        <span class="mr-3">🛠️</span> 7. Typical Use Cases: When to Use Cookies vs Sessions
       </h2>
-      <ul class="list-disc pl-6 space-y-2">
-        <li>User login/authentication (session-based or token-based)</li>
-        <li>Shopping cart storage</li>
-        <li>User preferences and settings</li>
-        <li>Tracking & analytics</li>
-      </ul>
-      <p class="mt-2">
-        For APIs (especially RESTful), stateless approaches (e.g., JWT) are now common, but cookie/session flows remain
-        widely used in web applications.
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Use Cookies -->
+        <div>
+          <h3 class="font-bold text-lg mb-2 flex items-center"><span class="mr-2">🍪</span> Use Cookies When:</h3>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Storing small, non-sensitive data on the client (e.g., UI preferences, language selection).</li>
+            <li>Implementing "Remember Me" features for login (store token, not credentials).</li>
+            <li>Tracking users for analytics or advertising across sessions.</li>
+            <li>Persisting client-specific settings or feature flags.</li>
+            <li>Supporting cross-tab or cross-window state in the browser.</li>
+            <li>Passing information between client and server on every request.</li>
+            <li>Managing authentication tokens in traditional web applications (with <code>HttpOnly</code> and
+              <code>Secure</code> flags for security).
+            </li>
+          </ul>
+        </div>
+        <!-- Use Sessions -->
+        <div>
+          <h3 class="font-bold text-lg mb-2 flex items-center"><span class="mr-2">💾</span> Use Sessions When:</h3>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Storing sensitive or large user-related data that should not be exposed to the client (e.g., shopping
+              cart, user roles, permissions).</li>
+            <li>Managing authenticated user state securely on the server side.</li>
+            <li>Implementing workflows that require multi-step processes (e.g., checkouts, wizards).</li>
+            <li>Keeping temporary state across multiple requests during a login session.</li>
+            <li>Supporting server-side invalidation (e.g., force logout, session timeout).</li>
+            <li>When scalability is addressed via distributed session stores (e.g., Redis) in larger systems.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="mt-6">
+        <span class="font-semibold">Best Practice:</span>
+        Modern APIs often use stateless authentication (JWT) instead of sessions, but traditional web apps still rely
+        heavily on session-based flows. Cookies are essential for browser storage and cross-request state, while
+        sessions should be used for data that must remain secure and controlled by the server.
       </p>
     </section>
 
