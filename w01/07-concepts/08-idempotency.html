@@ -282,6 +282,41 @@
     </section>
 
     <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🕵️ Malicious but Technically Compliant Users</h2>
+
+      <p class="mb-4">
+        Not all threats come from users breaking rules. Sometimes, attackers comply with all technical policies — valid
+        email, unique phone number, proper rate limits — yet still exploit the system’s logic to cause harm.
+      </p>
+
+      <h3 class="text-lg font-medium mb-2">📉 Real-World Examples</h3>
+      <ul class="list-disc list-inside space-y-2 mb-4">
+        <li>Registering hundreds of accounts using different valid disposable emails.</li>
+        <li>Abusing referral or signup bonuses with unique phone numbers.</li>
+        <li>Making thousands of valid API calls per hour, staying within rate limits — but draining system resources.
+        </li>
+      </ul>
+
+      <h3 class="text-lg font-medium mb-2">🔐 Defensive Approach: Allow but Monitor</h3>
+      <p class="mb-4">
+        When you can’t block by technical violation, rely on intelligent defense:
+      </p>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Behavioral Analytics:</strong> Detect abnormal usage patterns.</li>
+        <li><strong>Shadow Banning:</strong> Let the user proceed but suppress their impact.</li>
+        <li><strong>Dynamic Thresholds:</strong> Apply stricter limits based on risk scoring.</li>
+        <li><strong>Delayed Processing:</strong> Intentionally slow down suspicious flows.</li>
+        <li><strong>Audit & Alerts:</strong> Log everything and alert on anomaly clusters.</li>
+      </ul>
+
+      <div class="bg-red-50 border-l-4 border-red-400 p-4 mt-6 text-sm">
+        <strong>Senior/Lead Insight:</strong><br>
+        Security is not about blocking everything suspicious. It’s about knowing what to let through — and watching it
+        carefully.
+      </div>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
       <h2 class="text-2xl font-semibold mb-4">🧠 Considerations for Senior/Lead Developers</h2>
       <p>
         Senior and lead developers should pay special attention to the following aspects when designing
