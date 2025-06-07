@@ -11,8 +11,7 @@
 <body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
 
   <!-- Header -->
-  <header
-    class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
     <h1 class="text-3xl font-bold animate-pulse mb-2">🍪 Cookies and Sessions in API Design</h1>
     <p class="text-lg opacity-90">Understanding State Management in Stateless Protocols</p>
   </header>
@@ -26,7 +25,9 @@
         <span class="mr-3">📚</span> 1. Introduction to Cookies and Sessions
       </h2>
       <p>
-        HTTP is a stateless protocol, meaning each request is independent and has no knowledge of previous interactions. Many applications require stateful interactions (e.g., authentication, shopping carts). <b>Cookies and sessions</b> are common techniques to enable stateful behavior in stateless web protocols.
+        HTTP is a stateless protocol, meaning each request is independent and has no knowledge of previous interactions.
+        Many applications require stateful interactions (e.g., authentication, shopping carts). <b>Cookies and
+          sessions</b> are common techniques to enable stateful behavior in stateless web protocols.
       </p>
     </section>
 
@@ -37,7 +38,8 @@
       </h2>
       <ul class="list-disc pl-6 space-y-2">
         <li>
-          <b>Cookies</b> are small key-value data stored on the client (browser) and sent with every request to the server for the associated domain.
+          <b>Cookies</b> are small key-value data stored on the client (browser) and sent with every request to the
+          server for the associated domain.
         </li>
         <li>
           Created via the <code>Set-Cookie</code> HTTP header or JavaScript.
@@ -65,13 +67,15 @@
       </h2>
       <ul class="list-disc pl-6 space-y-2">
         <li>
-          <b>Sessions</b> are server-side storage for user-specific data, identified by a <b>session ID</b> (often stored in a cookie).
+          <b>Sessions</b> are server-side storage for user-specific data, identified by a <b>session ID</b> (often
+          stored in a cookie).
         </li>
         <li>
           Common usage: authentication state, shopping carts, user preferences, temporary data.
         </li>
         <li>
-          The server maintains a map of session IDs to user data; the client sends the session ID with each request (usually via cookie).
+          The server maintains a map of session IDs to user data; the client sends the session ID with each request
+          (usually via cookie).
         </li>
         <li>
           Session data can be stored in memory, databases, or distributed caches (Redis, Memcached).
@@ -148,54 +152,59 @@
       </ul>
     </section>
 
-        <!-- X. How Cookies Work -->
-        <section class="bg-white p-6 rounded-lg shadow">
-          <h2 class="text-2xl font-semibold flex items-center mb-4">
-            <span class="mr-3">🔄</span> How Cookies Work
-          </h2>
-          <ul class="list-disc pl-6 space-y-2">
-            <li>
-              When a server wants to store information on the client side, it sends a <code>Set-Cookie</code> header in its HTTP response.
-            </li>
-            <li>
-              The browser saves this data as a cookie and attaches it to all subsequent requests to the same domain via the <code>Cookie</code> header.
-            </li>
-            <li>
-              Multiple cookies can be set for a domain, each identified by a name-value pair.
-            </li>
-            <li>
-              Browsers automatically manage the sending of cookies based on their <b>domain</b> and <b>path</b> restrictions.
-            </li>
-            <li>
-              Cookies can have additional attributes:
-              <ul class="list-disc pl-8">
-                <li><b>Expires/Max-Age:</b> Controls when the cookie will be deleted.</li>
-                <li><b>Secure:</b> Sent only over HTTPS.</li>
-                <li><b>HttpOnly:</b> Not accessible via JavaScript, reducing XSS risk.</li>
-                <li><b>SameSite:</b> Controls cross-origin behavior to reduce CSRF risk.</li>
-              </ul>
-            </li>
-            <li>
-              Cookies are limited by browsers in size (usually 4KB per cookie) and quantity (per domain and total).
-            </li>
-            <li>
-              Example flow:
-              <div class="mt-2 ml-4">
-                <ol class="list-decimal pl-6">
-                  <li>User sends a request to the server (e.g., login).</li>
-                  <li>Server responds with <code>Set-Cookie: session_id=abc123; HttpOnly; Secure</code>.</li>
-                  <li>Browser stores the cookie and sends it in all future requests to that server:</li>
-                  <li>Every subsequent request to that domain includes <code>Cookie: session_id=abc123</code> in the HTTP header.</li>
-                  <li>Server uses the cookie value to retrieve session or user data.</li>
-                </ol>
-              </div>
-            </li>
+    <!-- X. How Cookies Work -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold flex items-center mb-4">
+        <span class="mr-3">🔄</span> How Cookies Work
+      </h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>
+          When a server wants to store information on the client side, it sends a <code>Set-Cookie</code> header in its
+          HTTP response.
+        </li>
+        <li>
+          The browser saves this data as a cookie and attaches it to all subsequent requests to the same domain via the
+          <code>Cookie</code> header.
+        </li>
+        <li>
+          Multiple cookies can be set for a domain, each identified by a name-value pair.
+        </li>
+        <li>
+          Browsers automatically manage the sending of cookies based on their <b>domain</b> and <b>path</b>
+          restrictions.
+        </li>
+        <li>
+          Cookies can have additional attributes:
+          <ul class="list-disc pl-8">
+            <li><b>Expires/Max-Age:</b> Controls when the cookie will be deleted.</li>
+            <li><b>Secure:</b> Sent only over HTTPS.</li>
+            <li><b>HttpOnly:</b> Not accessible via JavaScript, reducing XSS risk.</li>
+            <li><b>SameSite:</b> Controls cross-origin behavior to reduce CSRF risk.</li>
           </ul>
-          <div class="mt-4">
-            <b>Summary:</b> Cookies act as a bridge between client and server, allowing the server to recognize and remember returning users or store client preferences.
+        </li>
+        <li>
+          Cookies are limited by browsers in size (usually 4KB per cookie) and quantity (per domain and total).
+        </li>
+        <li>
+          Example flow:
+          <div class="mt-2 ml-4">
+            <ol class="list-decimal pl-6">
+              <li>User sends a request to the server (e.g., login).</li>
+              <li>Server responds with <code>Set-Cookie: session_id=abc123; HttpOnly; Secure</code>.</li>
+              <li>Browser stores the cookie and sends it in all future requests to that server:</li>
+              <li>Every subsequent request to that domain includes <code>Cookie: session_id=abc123</code> in the HTTP
+                header.</li>
+              <li>Server uses the cookie value to retrieve session or user data.</li>
+            </ol>
           </div>
-        </section>
-    
+        </li>
+      </ul>
+      <div class="mt-4">
+        <b>Summary:</b> Cookies act as a bridge between client and server, allowing the server to recognize and remember
+        returning users or store client preferences.
+      </div>
+    </section>
+
 
     <!-- 6. Best Practices -->
     <section class="bg-white p-6 rounded-lg shadow">
@@ -260,7 +269,8 @@
       </h2>
       <ul class="list-disc pl-6 space-y-2">
         <li>
-          <b>Scaling sessions</b>: In-memory storage doesn't scale across servers—requires distributed stores (Redis, Memcached).
+          <b>Scaling sessions</b>: In-memory storage doesn't scale across servers—requires distributed stores (Redis,
+          Memcached).
         </li>
         <li>
           <b>Cookie size limits</b>: Browsers restrict size and number of cookies.
@@ -278,11 +288,13 @@
     </section>
 
     ChatGPT said:
-Dưới đây là section giải thích chi tiết về cách cookie hoạt động (How Cookies Work), trình bày bằng tiếng Anh, dùng Tailwind, đúng format theo các section khác. Bạn chỉ cần chèn vào trước phần Security Considerations hoặc ở bất kỳ đâu bạn muốn:
+    Dưới đây là section giải thích chi tiết về cách cookie hoạt động (How Cookies Work), trình bày bằng tiếng Anh, dùng
+    Tailwind, đúng format theo các section khác. Bạn chỉ cần chèn vào trước phần Security Considerations hoặc ở bất kỳ
+    đâu bạn muốn:
 
-html
-Copy
-Edit
+    html
+    Copy
+    Edit
     <!-- X. How Cookies Work -->
     <section class="bg-white p-6 rounded-lg shadow">
       <h2 class="text-2xl font-semibold flex items-center mb-4">
@@ -290,16 +302,19 @@ Edit
       </h2>
       <ul class="list-disc pl-6 space-y-2">
         <li>
-          When a server wants to store information on the client side, it sends a <code>Set-Cookie</code> header in its HTTP response.
+          When a server wants to store information on the client side, it sends a <code>Set-Cookie</code> header in its
+          HTTP response.
         </li>
         <li>
-          The browser saves this data as a cookie and attaches it to all subsequent requests to the same domain via the <code>Cookie</code> header.
+          The browser saves this data as a cookie and attaches it to all subsequent requests to the same domain via the
+          <code>Cookie</code> header.
         </li>
         <li>
           Multiple cookies can be set for a domain, each identified by a name-value pair.
         </li>
         <li>
-          Browsers automatically manage the sending of cookies based on their <b>domain</b> and <b>path</b> restrictions.
+          Browsers automatically manage the sending of cookies based on their <b>domain</b> and <b>path</b>
+          restrictions.
         </li>
         <li>
           Cookies can have additional attributes:
@@ -320,14 +335,16 @@ Edit
               <li>User sends a request to the server (e.g., login).</li>
               <li>Server responds with <code>Set-Cookie: session_id=abc123; HttpOnly; Secure</code>.</li>
               <li>Browser stores the cookie and sends it in all future requests to that server:</li>
-              <li>Every subsequent request to that domain includes <code>Cookie: session_id=abc123</code> in the HTTP header.</li>
+              <li>Every subsequent request to that domain includes <code>Cookie: session_id=abc123</code> in the HTTP
+                header.</li>
               <li>Server uses the cookie value to retrieve session or user data.</li>
             </ol>
           </div>
         </li>
       </ul>
       <div class="mt-4">
-        <b>Summary:</b> Cookies act as a bridge between client and server, allowing the server to recognize and remember returning users or store client preferences.
+        <b>Summary:</b> Cookies act as a bridge between client and server, allowing the server to recognize and remember
+        returning users or store client preferences.
       </div>
     </section>
 
@@ -338,10 +355,12 @@ Edit
       </h2>
       <ul class="list-disc pl-6 space-y-2">
         <li>
-          Evaluate <b>stateless (token-based)</b> vs <b>stateful (session-based)</b> approaches based on product needs, scalability, and architecture (monolith vs microservices).
+          Evaluate <b>stateless (token-based)</b> vs <b>stateful (session-based)</b> approaches based on product needs,
+          scalability, and architecture (monolith vs microservices).
         </li>
         <li>
-          Ensure secure configuration and management of cookies (<b>Secure</b>, <b>HttpOnly</b>, <b>SameSite</b>, session rotation).
+          Ensure secure configuration and management of cookies (<b>Secure</b>, <b>HttpOnly</b>, <b>SameSite</b>,
+          session rotation).
         </li>
         <li>
           Implement <b>centralized session storage</b> (e.g., Redis) in distributed or multi-instance environments.
@@ -367,9 +386,12 @@ Edit
         <span class="mr-3">🔗</span> 10. References & Further Reading
       </h2>
       <ul class="list-disc pl-6">
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies" class="text-blue-600 underline" target="_blank">MDN: HTTP Cookies</a></li>
-        <li><a href="https://owasp.org/www-community/HttpOnly" class="text-blue-600 underline" target="_blank">OWASP: HttpOnly</a></li>
-        <li><a href="https://www.educative.io/interview-prep/api-design/cookies-and-sessions" class="text-blue-600 underline" target="_blank">Educative: Cookies and Sessions</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies" class="text-blue-600 underline"
+            target="_blank">MDN: HTTP Cookies</a></li>
+        <li><a href="https://owasp.org/www-community/HttpOnly" class="text-blue-600 underline" target="_blank">OWASP:
+            HttpOnly</a></li>
+        <li><a href="https://www.educative.io/interview-prep/api-design/cookies-and-sessions"
+            class="text-blue-600 underline" target="_blank">Educative: Cookies and Sessions</a></li>
       </ul>
     </section>
 
@@ -380,4 +402,5 @@ Edit
     &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
   </footer>
 </body>
+
 </html>
