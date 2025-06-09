@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Server-side Rendering vs. Client-side Rendering</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">⚡ Server-side Rendering vs. Client-side Rendering</h1>
+    <div class="text-lg opacity-80">A Comprehensive Comparison for Modern Web Applications</div>
+  </header>
+
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Introduction -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-bold flex items-center gap-2 mb-4">
+        <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m4 0h-1a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        Overview
+      </h2>
+      <p>
+        Rendering is the process of converting application code into HTML that can be displayed in a user's browser.
+        There are two primary approaches in modern web development: <b>Server-side Rendering (SSR)</b> and
+        <b>Client-side Rendering (CSR)</b>.
+        Each approach has unique strengths, weaknesses, and use cases, and understanding both is crucial for building
+        scalable and performant web applications.
+      </p>
+    </section>
+
+    <!-- SPA and CSR -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-bold flex items-center gap-2 mb-4">
+        <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M12 8v8" />
+        </svg>
+        SPA and CSR
+      </h2>
+      <p>
+        <b>SPA (Single Page Application)</b> is an architecture where the web app loads a single HTML page and
+        dynamically updates content as users interact with the app, without reloading the entire page.
+        <b>CSR (Client-side Rendering)</b> is the rendering technique most commonly used in SPAs, where the browser is
+        responsible for rendering the user interface using JavaScript.
+      </p>
+      <ul class="list-disc ml-6 mt-3 space-y-1">
+        <li>SPA enhances user experience with fast, seamless navigation (no full page reloads).</li>
+        <li>CSR is the typical rendering strategy for SPAs, but SPAs can also benefit from SSR (hybrid approach).</li>
+        <li>Initial load can be slower with pure CSR, but navigation is instant after initial assets are loaded.</li>
+        <li>Popular frameworks: React, Vue, Angular (with routers).</li>
+      </ul>
+    </section>
+
+    <!-- SSR with WordPress -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-bold flex items-center gap-2 mb-4">
+        <svg class="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 20l9-5-9-5-9 5 9 5z" />
+        </svg>
+        SSR with WordPress
+      </h2>
+      <p>
+        <b>WordPress</b> is a classic example of server-side rendering. Each page request triggers PHP code to render
+        HTML on the server, which is then delivered to the browser.
+        WordPress sites are SEO-friendly by default due to SSR, and content is available immediately to users and search
+        engines.
+      </p>
+      <ul class="list-disc ml-6 mt-3 space-y-1">
+        <li>When a user requests a page, the server executes PHP, fetches data from MySQL, and sends fully rendered
+          HTML.</li>
+        <li>Most WordPress plugins and themes are built around SSR.</li>
+        <li>Dynamic content and personalization can be handled server-side before delivering the page.</li>
+        <li>Hybrid approaches are possible (REST API + React frontends, aka “headless WordPress”).</li>
+      </ul>
+    </section>
+
+    <!-- Hybrid Flow: Combining SSR and SPA -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-bold flex items-center gap-2 mb-4">
+        <svg class="w-6 h-6 text-pink-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="4" y="4" width="16" height="16" rx="2" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 16h8M8 12h8M8 8h8" />
+        </svg>
+        Hybrid Rendering Flow: SSR + SPA (Modern Approach)
+      </h2>
+      <p>
+        Many modern frameworks (Next.js, Nuxt, Remix) combine SSR for the first load (better SEO, instant content) with
+        SPA/CSR for subsequent navigation (fast transitions, rich interactivity). The flow typically looks like:
+      </p>
+      <div class="overflow-x-auto my-6">
+        <!-- Diagram: SSR + SPA Hybrid Flow (Horizontal) -->
+        <div class="flex items-center justify-center space-x-6">
+          <div class="flex flex-col items-center">
+            <div
+              class="rounded-full bg-blue-500 text-white w-16 h-16 flex items-center justify-center text-2xl font-bold">
+              1</div>
+            <div class="mt-2 text-sm text-center">User requests page<br />(initial visit)</div>
+          </div>
+          <div class="w-8 h-1 bg-gray-300 rounded"></div>
+          <div class="flex flex-col items-center">
+            <div
+              class="rounded-full bg-green-500 text-white w-16 h-16 flex items-center justify-center text-2xl font-bold">
+              2</div>
+            <div class="mt-2 text-sm text-center">Server renders<br />HTML (SSR)</div>
+          </div>
+          <div class="w-8 h-1 bg-gray-300 rounded"></div>
+          <div class="flex flex-col items-center">
+            <div
+              class="rounded-full bg-yellow-400 text-white w-16 h-16 flex items-center justify-center text-2xl font-bold">
+              3</div>
+            <div class="mt-2 text-sm text-center">Browser displays<br />HTML instantly</div>
+          </div>
+          <div class="w-8 h-1 bg-gray-300 rounded"></div>
+          <div class="flex flex-col items-center">
+            <div
+              class="rounded-full bg-purple-500 text-white w-16 h-16 flex items-center justify-center text-2xl font-bold">
+              4</div>
+            <div class="mt-2 text-sm text-center">JavaScript loads<br />& hydrates page</div>
+          </div>
+          <div class="w-8 h-1 bg-gray-300 rounded"></div>
+          <div class="flex flex-col items-center">
+            <div
+              class="rounded-full bg-pink-500 text-white w-16 h-16 flex items-center justify-center text-2xl font-bold">
+              5</div>
+            <div class="mt-2 text-sm text-center">User navigates<br />(SPA, CSR)</div>
+          </div>
+        </div>
+      </div>
+      <ul class="list-disc ml-6 mt-4 space-y-1">
+        <li><b>First load:</b> SSR provides fast content and SEO.</li>
+        <li><b>After hydration:</b> SPA/CSR takes over, allowing instant navigation without page reloads.</li>
+        <li>This approach provides the best of both worlds: performance, SEO, and rich interactivity.</li>
+      </ul>
+    </section>
+
+    <!-- What is Server-side Rendering (SSR)? -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-bold flex items-center gap-2 mb-4">
+        <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+        </svg>
+        What is Server-side Rendering (SSR)?
+      </h2>
+      <p>
+        SSR is a rendering technique where HTML is generated on the server in response to each client request. The
+        browser receives a fully-rendered HTML page, which can be immediately displayed to the user.
+      </p>
+      <ul class="list-disc ml-6 mt-3 space-y-1">
+        <li>Initial HTML is generated and sent by the server.</li>
+        <li>Content is visible faster (especially important for SEO and time-to-first-paint).</li>
+        <li>JavaScript is usually hydrated on the client for interactivity after the initial load.</li>
+      </ul>
+    </section>
+
+    <!-- What is Client-side Rendering (CSR)? -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-bold flex items-center gap-2 mb-4">
+        <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M12 8v8" />
+        </svg>
+        What is Client-side Rendering (CSR)?
+      </h2>
+      <p>
+        CSR is a rendering technique where the browser downloads a minimal HTML page, and then JavaScript running in the
+        browser generates and manages the user interface.
+      </p>
+      <ul class="list-disc ml-6 mt-3 space-y-1">
+        <li>Initial HTML is usually an empty div or minimal shell.</li>
+        <li>JavaScript bundles and assets are fetched and executed to render content.</li>
+        <li>Content appears after JavaScript executes—potentially slower initial paint.</li>
+      </ul>
+    </section>
+
+    <!-- SSR vs CSR: How Do They Work? -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-bold flex items-center gap-2 mb-4">
+        <svg class="w-6 h-6 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5" />
+        </svg>
+        SSR vs. CSR: How Do They Work?
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- SSR Flow -->
+        <div>
+          <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="text-green-500">SSR Flow</span></h3>
+          <ol class="list-decimal ml-6 space-y-1">
+            <li>User requests a page (HTTP request sent to server).</li>
+            <li>Server generates the HTML for the page.</li>
+            <li>Server sends the full HTML to the browser.</li>
+            <li>Browser displays content immediately.</li>
+            <li>JavaScript hydrates the page for interactivity.</li>
+          </ol>
+        </div>
+        <!-- CSR Flow -->
+        <div>
+          <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="text-yellow-500">CSR Flow</span></h3>
+          <ol class="list-decimal ml-6 space-y-1">
+            <li>User requests a page.</li>
+            <li>Server sends minimal HTML + JavaScript bundles.</li>
+            <li>Browser loads JavaScript, which fetches data and generates HTML.</li>
+            <li>User sees content after JavaScript executes.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-bold flex items-center gap-2 mb-4">
+        <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+        SSR vs. CSR: Pros & Cons
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="min-w-full border border-gray-200 mt-4">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="py-2 px-4 border-b text-left">Aspect</th>
+              <th class="py-2 px-4 border-b text-left">SSR</th>
+              <th class="py-2 px-4 border-b text-left">CSR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="py-2 px-4 border-b">First Contentful Paint (FCP)</td>
+              <td class="py-2 px-4 border-b">Faster, immediate content</td>
+              <td class="py-2 px-4 border-b">Slower, depends on JS execution</td>
+            </tr>
+            <tr>
+              <td class="py-2 px-4 border-b">SEO</td>
+              <td class="py-2 px-4 border-b">Excellent (search bots see content)</td>
+              <td class="py-2 px-4 border-b">Poor by default (can be improved with pre-rendering)</td>
+            </tr>
+            <tr>
+              <td class="py-2 px-4 border-b">Interactivity</td>
+              <td class="py-2 px-4 border-b">Requires hydration, can be slower for very interactive apps</td>
+              <td class="py-2 px-4 border-b">Immediate after JS loads, smoother for SPAs</td>
+            </tr>
+            <tr>
+              <td class="py-2 px-4 border-b">Server Load</td>
+              <td class="py-2 px-4 border-b">Higher (renders HTML for every request)</td>
+              <td class="py-2 px-4 border-b">Lower (server sends static assets)</td>
+            </tr>
+            <tr>
+              <td class="py-2 px-4 border-b">Complexity</td>
+              <td class="py-2 px-4 border-b">More setup (need backend capable of rendering UI)</td>
+              <td class="py-2 px-4 border-b">Simpler deployment (static files + API)</td>
+            </tr>
+            <tr>
+              <td class="py-2 px-4 border-b">Initial Page Load</td>
+              <td class="py-2 px-4 border-b">Fast</td>
+              <td class="py-2 px-4 border-b">Can be slow (especially on low-end devices)</td>
+            </tr>
+            <tr>
+              <td class="py-2 px-4 border-b">Subsequent Navigation</td>
+              <td class="py-2 px-4 border-b">Slower (full reload unless enhanced with client-side routing)</td>
+              <td class="py-2 px-4 border-b">Faster (SPA routing, no full reload)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-bold flex items-center gap-2 mb-4">
+        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Common Use Cases
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-green-500 mb-2">SSR is best for:</h3>
+          <ul class="list-disc ml-6 space-y-1">
+            <li>Content-heavy websites (blogs, news, e-commerce product pages)</li>
+            <li>SEO-critical apps (marketing sites, landing pages)</li>
+            <li>First-load performance is a priority</li>
+            <li>Personalization on the first request</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-yellow-500 mb-2">CSR is best for:</h3>
+          <ul class="list-disc ml-6 space-y-1">
+            <li>Highly interactive SPAs (dashboards, admin panels, project management tools)</li>
+            <li>Apps with complex state and client-side logic</li>
+            <li>Environments where SEO is not critical (internal tools)</li>
+            <li>Fast subsequent page transitions required</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- When to Choose SSR vs CSR? -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-bold flex items-center gap-2 mb-4">
+        <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 6h4v12h-4z" />
+        </svg>
+        When Should You Use SSR or CSR?
+      </h2>
+      <p>
+        <b>Use SSR when</b> you need fast first paint, better SEO, and dynamic content per user on first load.
+      </p>
+      <p class="mt-2">
+        <b>Use CSR when</b> your app is very interactive, has lots of client-side logic, or SEO is not a primary
+        concern.
+      </p>
+      <p class="mt-2">
+        <b>Modern frameworks</b> (Next.js, Nuxt, Remix, etc.) allow mixing both approaches: SSR for first load, then CSR
+        for client-side navigation.
+      </p>
+    </section>
+
+    <!-- Senior/Lead Considerations -->
+    <section class="bg-white p-6 rounded-lg shadow border-l-4 border-indigo-400">
+      <h2 class="text-2xl font-bold flex items-center gap-2 mb-4">
+        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 8c-1.1 0-2 .9-2 2m4 0c0-1.1-.9-2-2-2zm0 4v2m0 4h.01" />
+        </svg>
+        Senior/Lead: Key Considerations
+      </h2>
+      <ul class="list-disc ml-6 space-y-2">
+        <li><b>SEO & Accessibility:</b> SSR is almost always required for strong SEO; however, frameworks can offer
+          static generation (SSG) for hybrid use cases.</li>
+        <li><b>Performance Monitoring:</b> Measure Time-to-First-Byte (TTFB), First Contentful Paint (FCP), and Total
+          Blocking Time (TBT) when comparing approaches.</li>
+        <li><b>Scalability:</b> SSR increases server load; ensure your infrastructure can scale horizontally.</li>
+        <li><b>Developer Experience:</b> Consider the impact on developer workflow. SSR may require Node.js on the
+          server, whereas CSR can be deployed as static files.</li>
+        <li><b>Hydration Pitfalls:</b> Mismatches between server-rendered and client-rendered markup can cause bugs;
+          always test hydration scenarios.</li>
+        <li><b>Security:</b> SSR exposes server infrastructure—harden endpoints, sanitize data, and beware of
+          XSS/SSR-specific attacks.</li>
+        <li><b>Framework Choice:</b> Use mature frameworks (Next.js, Nuxt, etc.) for production SSR; avoid reinventing
+          the wheel.</li>
+      </ul>
+    </section>
+
+    <!-- References -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-bold flex items-center gap-2 mb-4">
+        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M19 21H5a2 2 0 01-2-2V7a2 2 0 012-2h5l2-2h5a2 2 0 012 2v12a2 2 0 01-2 2z" />
+        </svg>
+        References
+      </h2>
+      <ul class="list-disc ml-6">
+        <li>
+          <a href="https://www.educative.io/interview-prep/api-design/server-side-rendering-vs-client-side-rendering"
+            class="text-blue-600 underline" target="_blank">
+            Server-side Rendering vs. Client-side Rendering – Educative.io
+          </a>
+        </li>
+        <li>
+          <a href="https://nextjs.org/docs" class="text-blue-600 underline" target="_blank">
+            Next.js Documentation
+          </a>
+        </li>
+        <li>
+          <a href="https://nuxt.com/docs" class="text-blue-600 underline" target="_blank">
+            Nuxt Documentation
+          </a>
+        </li>
+        <li>
+          <a href="https://developer.wordpress.org/themes/basics/template-files/#the-header-and-footer-templates"
+            class="text-blue-600 underline" target="_blank">
+            WordPress Theme Development – Header & Footer Templates
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+</body>
+
+</html>
