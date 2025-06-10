@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>API Design - Caching at Different Layers</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🗄️ Caching at Different Layers</h1>
+  </header>
+
+  <!-- Main content -->
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Section: Introduction -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🔍</span>
+        <span>Introduction</span>
+      </h2>
+      <p>
+        Caching is a crucial technique used to improve the performance and scalability of web APIs by storing frequently
+        accessed data closer to the client or server.
+        It helps reduce latency, decrease load on backend services, and improve user experience.
+      </p>
+    </section>
+
+    <!-- Section: Types of Caching Layers -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>📚</span>
+        <span>Types of Caching Layers</span>
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Browser Cache:</strong> Cache stored by the user's browser to quickly serve static resources like
+          images, CSS, and JavaScript files.</li>
+        <li><strong>CDN Cache:</strong> Content Delivery Networks cache static and some dynamic content closer to end
+          users worldwide.</li>
+        <li><strong>Reverse Proxy Cache:</strong> Proxies like NGINX or Varnish cache responses on the server side
+          before forwarding requests to backend services.</li>
+        <li><strong>Application Cache:</strong> Caching within the application server, often using in-memory stores like
+          Redis or Memcached.</li>
+        <li><strong>Database Cache:</strong> Caches query results or frequent reads to reduce database load.</li>
+      </ul>
+    </section>
+
+    <!-- Section: Cache-Control Headers -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>⚙️</span>
+        <span>Cache-Control Headers</span>
+      </h2>
+      <p>
+        HTTP cache-control headers guide caching behavior between clients and servers.
+        Important directives include:
+      </p>
+      <ul class="list-disc list-inside space-y-2">
+        <li><code>max-age</code>: Specifies how long a resource is considered fresh.</li>
+        <li><code>no-cache</code>: Forces revalidation before reuse.</li>
+        <li><code>no-store</code>: Prevents caching completely.</li>
+        <li><code>public</code> and <code>private</code>: Define cache visibility.</li>
+      </ul>
+    </section>
+
+    <!-- Section: Client-Side Caching -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>📱</span>
+        <span>Client-Side Caching</span>
+      </h2>
+      <p>
+        Browsers cache resources to speed up page load times. Using cache-control and ETags, clients can validate
+        whether cached resources are still fresh, reducing redundant network calls.
+      </p>
+    </section>
+
+    <!-- Section: CDN and Reverse Proxy Caching -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🌐</span>
+        <span>CDN and Reverse Proxy Caching</span>
+      </h2>
+      <p>
+        CDNs serve cached content from edge locations close to users globally, reducing latency and origin load.
+        Reverse proxies cache responses on behalf of the backend, improving throughput and resilience.
+      </p>
+    </section>
+
+    <!-- Section: Application and Database Caching -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🛠️</span>
+        <span>Application and Database Caching</span>
+      </h2>
+      <p>
+        Applications often use in-memory caches (like Redis, Memcached) to store computation-heavy or frequently
+        requested data.
+        Databases can cache query results or use built-in caching layers to speed up repeated reads.
+      </p>
+    </section>
+
+    <!-- Section: Cache Invalidation -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🚦</span>
+        <span>Cache Invalidation Strategies</span>
+      </h2>
+      <p>
+        Managing cache freshness is critical:
+      </p>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Time-based Expiry:</strong> Cache entries expire after a fixed TTL (time-to-live).</li>
+        <li><strong>Event-based Invalidation:</strong> Invalidate cache when underlying data changes.</li>
+        <li><strong>Manual Invalidation:</strong> Explicitly clear or update caches.</li>
+      </ul>
+    </section>
+
+    <!-- Section: Benefits and Trade-offs -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>⚖️</span>
+        <span>Benefits and Trade-offs of Caching</span>
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Benefits:</strong> Lower latency, reduced backend load, better scalability.</li>
+        <li><strong>Trade-offs:</strong> Complexity in cache management, stale data risk, cache invalidation challenges.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section: Cache Types Diagram (Horizontal) -->
+    <section class="bg-white p-6 rounded-lg shadow overflow-x-auto">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🖼️</span>
+        <span>Cache Types Diagram (Horizontal)</span>
+      </h2>
+
+      <div class="flex items-center space-x-6 min-w-max">
+        <!-- Browser Cache -->
+        <div class="flex flex-col items-center bg-blue-100 border border-blue-400 rounded-md p-4 min-w-[160px]">
+          <strong>Browser Cache</strong>
+          <p class="text-sm mt-1 text-center">Caches static assets in user's browser</p>
+        </div>
+
+        <!-- Arrow Right -->
+        <div class="text-blue-500 text-3xl select-none">➡️</div>
+
+        <!-- CDN Cache -->
+        <div class="flex flex-col items-center bg-green-100 border border-green-400 rounded-md p-4 min-w-[160px]">
+          <strong>CDN Cache</strong>
+          <p class="text-sm mt-1 text-center">Caches content at edge locations worldwide</p>
+        </div>
+
+        <!-- Arrow Right -->
+        <div class="text-green-500 text-3xl select-none">➡️</div>
+
+        <!-- Reverse Proxy Cache -->
+        <div class="flex flex-col items-center bg-yellow-100 border border-yellow-400 rounded-md p-4 min-w-[160px]">
+          <strong>Reverse Proxy Cache</strong>
+          <p class="text-sm mt-1 text-center">Caches responses on server-side proxy</p>
+        </div>
+
+        <!-- Arrow Right -->
+        <div class="text-yellow-500 text-3xl select-none">➡️</div>
+
+        <!-- Application Cache -->
+        <div class="flex flex-col items-center bg-purple-100 border border-purple-400 rounded-md p-4 min-w-[160px]">
+          <strong>Application Cache</strong>
+          <p class="text-sm mt-1 text-center">In-memory caching inside the application (Redis, Memcached)</p>
+        </div>
+
+        <!-- Arrow Right -->
+        <div class="text-purple-500 text-3xl select-none">➡️</div>
+
+        <!-- Database Cache -->
+        <div class="flex flex-col items-center bg-pink-100 border border-pink-400 rounded-md p-4 min-w-[160px]">
+          <strong>Database Cache</strong>
+          <p class="text-sm mt-1 text-center">Caching query results or data close to DB</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Section: Senior/Lead Should Note -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🚀</span>
+        <span>Senior/Lead Should Note</span>
+      </h2>
+      <ul class="list-disc list-inside space-y-3">
+        <li><strong>Designing Cache Layers:</strong> Architect caching strategy carefully, balancing freshness and
+          performance across multiple layers.</li>
+        <li><strong>Cache Consistency:</strong> Implement robust cache invalidation and update mechanisms to prevent
+          stale or inconsistent data.</li>
+        <li><strong>Monitoring & Metrics:</strong> Track cache hit/miss rates, latency improvements, and error rates to
+          optimize cache effectiveness.</li>
+        <li><strong>Security Considerations:</strong> Avoid caching sensitive or user-specific data publicly, respect
+          privacy and compliance rules.</li>
+        <li><strong>Failover Strategies:</strong> Ensure your system gracefully handles cache misses or cache server
+          failures without impacting user experience.</li>
+        <li><strong>Choosing Cache Technologies:</strong> Evaluate trade-offs between in-memory caches, distributed
+          caches, and CDN/proxy caches based on use cases and scale.</li>
+        <li><strong>Collaboration:</strong> Coordinate caching policies with frontend, backend, and operations teams for
+          consistent behavior.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
