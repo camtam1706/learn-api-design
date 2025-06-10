@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Circuit Breaker Pattern – API Design</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">⚡ Circuit Breaker Pattern – API Design</h1>
+  </header>
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🔧 What is the Circuit Breaker Pattern?</h2>
+      <p>The Circuit Breaker is a resilience pattern designed to prevent cascading failures in distributed systems by
+        monitoring service health and halting calls to unhealthy services.</p>
+      <p>It helps block repeated failed calls, giving failed components time to recover and preserving overall system
+        stability :contentReference[oaicite:1]{index=1}.</p>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">⏱ States of Circuit Breaker</h2>
+      <ul class="list-disc pl-5">
+        <li><strong>Closed</strong>: Normal mode, all requests go through. If failures exceed threshold, transitions to
+          “Open”.</li>
+        <li><strong>Open</strong>: Immediately reject requests without calling the service. After a configured timeout,
+          moves to “Half‑open”.</li>
+        <li><strong>Half‑open</strong>: Allows limited trial requests. If they succeed, closes; if they fail, reopens
+          :contentReference[oaicite:2]{index=2}.</li>
+      </ul>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">⚠️ Why Use It?</h2>
+      <ul class="list-disc pl-5">
+        <li>Prevents repeated failures from overwhelming services and causing cascades
+          :contentReference[oaicite:3]{index=3}.</li>
+        <li>Works well alongside retry, timeout, and fallback patterns to build fault-tolerant systems
+          :contentReference[oaicite:4]{index=4}.</li>
+        <li>Improves user experience by fast-failing and avoiding long timeouts :contentReference[oaicite:5]{index=5}.
+        </li>
+      </ul>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">🛠 Implementation Guidelines</h2>
+      <p>Typical configuration requires:</p>
+      <ul class="list-disc pl-5">
+        <li>Failure threshold (e.g. 5 failures in 10 seconds).</li>
+        <li>Timeout before “half‑open” state.</li>
+        <li>Trial request limit in “half‑open”.</li>
+      </ul>
+      <p>Common libraries include Resilience4j (Java), Polly (.NET), and PyBreaker (Python)
+        :contentReference[oaicite:6]{index=6}.</p>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">📦 Integration with Other Patterns</h2>
+      <ul class="list-disc pl-5">
+        <li><strong>Timeouts</strong>: Prevent long-waiting calls.</li>
+        <li><strong>Retry</strong>: On failure, retry with back‑off, but controlled by circuit state.</li>
+        <li><strong>Fallback</strong>: Provide default response or graceful degradation when circuit is open.</li>
+      </ul>
+      <p>These combined form a resilient system–circuit breaker prevents overload, retry handles transient failures,
+        fallback ensures continuity. :contentReference[oaicite:7]{index=7}</p>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">📈 Benefits & Trade-offs</h2>
+      <ul class="list-disc pl-5">
+        <li>✅ Limits resource waste and speeds up failure handling.</li>
+        <li>⚖️ Risk of false‑tripping—partial failures may cause unnecessary circuit opens
+          :contentReference[oaicite:8]{index=8}.</li>
+        <li>🔄 Needs careful tuning of thresholds and timers.</li>
+        <li>📊 Complex in microservices with multiple shards or segmented failures—you may use sub‑circuit breakers per
+          sub‑service :contentReference[oaicite:9]{index=9}.</li>
+      </ul>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">📊 Diagram: Circuit Breaker Flow & States</h2>
+      <p>The following diagram illustrates the key states (Closed, Open, Half-Open) and the flow of requests through the Circuit Breaker.</p>
+      <!-- State transition diagram -->
+      <div class="flex flex-col items-center space-y-4">
+        <img src="../../assets/circuit_breaker_state_diagram.png" alt="State transitions of Circuit Breaker" class="max-w-full rounded shadow"/>
+        <p class="text-sm text-gray-600">Figure 1: State transitions: Closed → Open → Half‑Open and back</p>
+    
+        <img src="../../assets/circuit_breaker_flow.png" alt="Request flow through Circuit Breaker" class="max-w-full rounded shadow"/>
+        <p class="text-sm text-gray-600">Figure 2: Request flow – normal, failure, retry</p>
+      </div>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-2xl font-semibold mb-4">👴 Attention Points for Senior / Lead Engineers</h2>
+      <ol class="list-decimal pl-5">
+        <li><strong>Threshold Sensitivity:</strong> Adjust based on SLA and real‑world traffic patterns.</li>
+        <li><strong>Granularity:</strong> For microservices offering composite operations, separate circuits per
+          endpoint or shard to avoid overbroad failures.</li>
+        <li><strong>State Storage:</strong> In distributed systems, choose centralized store (Redis, DB) vs
+          local—impacts consistency.</li>
+        <li><strong>Observability:</strong> Log state transitions, counts; integrate with metrics and alerting for
+          proactivity.</li>
+        <li><strong>Polyglot Consistency:</strong> Ensure consistent behavior across services using different libraries
+          or languages.</li>
+        <li><strong>Recovery Strategy:</strong> Design robust half‑open logic—consider slow ramp‑up, exponential
+          back‑off, or isolate test traffic.</li>
+        <li><strong>Resilience Testing:</strong> Simulate failures and load to validate circuit behavior (e.g. chaos
+          testing).</li>
+      </ol>
+      <p>These considerations ensure circuits are tuned, observable, and aligned with overall system resilience
+        strategies.</p>
+    </section>
+  </main>
+
+  <footer class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+</body>
+
+</html>
