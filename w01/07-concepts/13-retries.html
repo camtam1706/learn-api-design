@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Managing Retries - API Design</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans leading-relaxed text-gray-800">
+
+  <!-- Header -->
+  <header
+    class="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg py-6 text-center">
+    <h1 class="text-3xl font-bold animate-pulse mb-2">🔄 Managing Retries in API Design</h1>
+  </header>
+
+  <!-- Main content -->
+  <main class="pt-10 px-6 max-w-6xl mx-auto space-y-10">
+
+    <!-- Section: Introduction -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>⚙️</span>
+        <span>Introduction</span>
+      </h2>
+      <p>
+        Managing retries is a fundamental technique in designing resilient and fault-tolerant APIs. It helps in
+        gracefully handling transient failures such as network issues or temporary service unavailability by retrying
+        failed requests.
+      </p>
+      <p class="mt-2">
+        However, retries must be carefully managed to avoid causing additional load, cascading failures, or resource
+        exhaustion.
+      </p>
+    </section>
+
+    <!-- Section: Why Retries Are Needed -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>❓</span>
+        <span>Why Retries Are Needed</span>
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Network failures and timeouts are common in distributed systems.</li>
+        <li>Services may become temporarily overloaded or unreachable.</li>
+        <li>Retries can improve success rates without manual intervention.</li>
+        <li>Properly implemented retries enhance overall system reliability.</li>
+      </ul>
+    </section>
+
+    <!-- Section: Retry Strategies -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🛠️</span>
+        <span>Retry Strategies</span>
+      </h2>
+      <p>
+        Several common retry strategies are used to manage retries effectively:
+      </p>
+      <ul class="list-disc list-inside space-y-2 mt-2">
+        <li><strong>Fixed Delay:</strong> Wait a fixed amount of time between retries.</li>
+        <li><strong>Exponential Backoff:</strong> Gradually increase the wait time exponentially after each failure.</li>
+        <li><strong>Jitter:</strong> Add randomness to backoff intervals to prevent retry storms and collision.</li>
+        <li><strong>Retry Limit:</strong> Define a maximum number of retry attempts to prevent infinite retries.</li>
+      </ul>
+    </section>
+
+    <!-- Section: Best Practices -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>✅</span>
+        <span>Best Practices for Managing Retries</span>
+      </h2>
+      <ol class="list-decimal list-inside space-y-2">
+        <li>
+          <strong>Use exponential backoff with jitter:</strong> This helps to spread out retries and reduces load spikes.
+        </li>
+        <li>
+          <strong>Set appropriate retry limits:</strong> Avoid infinite retries which may overload the system.
+        </li>
+        <li>
+          <strong>Retry only on transient errors:</strong> For example, network timeouts or 500-level server errors, not
+          on client errors (4xx).
+        </li>
+        <li>
+          <strong>Use idempotent operations:</strong> Ensure that retries do not cause unintended side effects.
+        </li>
+        <li>
+          <strong>Monitor and log retries:</strong> To detect unusual retry patterns and troubleshoot issues.
+        </li>
+        <li>
+          <strong>Fail fast when appropriate:</strong> Sometimes it’s better to fail immediately rather than retrying.
+        </li>
+      </ol>
+    </section>
+
+    <!-- Section: Handling Retries in API Clients -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>📡</span>
+        <span>Handling Retries in API Clients</span>
+      </h2>
+      <p>
+        API clients should implement retry logic transparently, allowing users to benefit from retries without
+        complexity. Key points include:
+      </p>
+      <ul class="list-disc list-inside space-y-2 mt-2">
+        <li>Implement retries with exponential backoff and jitter.</li>
+        <li>Retry only safe and idempotent operations.</li>
+        <li>Provide configuration for max retry attempts and timeout.</li>
+        <li>Expose retry status and errors clearly to the calling application.</li>
+      </ul>
+    </section>
+
+    <!-- Section: Handling Retries in API Servers -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🖥️</span>
+        <span>Handling Retries in API Servers</span>
+      </h2>
+      <p>
+        Servers should be designed to handle retries gracefully by:
+      </p>
+      <ul class="list-disc list-inside space-y-2 mt-2">
+        <li>Ensuring idempotency of operations where possible.</li>
+        <li>Using unique request identifiers to detect duplicate requests.</li>
+        <li>Implementing rate limiting and circuit breakers to protect from retry storms.</li>
+        <li>Providing clear error codes to help clients decide when to retry.</li>
+      </ul>
+    </section>
+
+    <!-- Section: Common Pitfalls -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>⚠️</span>
+        <span>Common Pitfalls to Avoid</span>
+      </h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Retrying non-idempotent operations causing duplicate side effects.</li>
+        <li>Infinite retries causing resource exhaustion.</li>
+        <li>Retry storms due to lack of jitter.</li>
+        <li>Ignoring error codes that indicate permanent failures.</li>
+        <li>Not monitoring retry attempts and failure patterns.</li>
+      </ul>
+    </section>
+
+    <!-- Section: Senior/Lead Notes -->
+    <section class="bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <span>🚀</span>
+        <span>Senior/Lead Attention Points</span>
+      </h2>
+      <ul class="list-disc list-inside space-y-3">
+        <li>
+          <strong>Design for Idempotency:</strong> Guide teams to design API endpoints so operations can safely be retried
+          without unintended side effects. This often means using unique request IDs or transaction tokens.
+        </li>
+        <li>
+          <strong>Define Clear Retry Policies:</strong> Establish and document retry strategies across client and server
+          components, including retry limits, backoff strategies, and error handling.
+        </li>
+        <li>
+          <strong>Protect Systems from Retry Storms:</strong> Implement circuit breakers, rate limiting, and jitter to
+          prevent cascading failures caused by simultaneous retries.
+        </li>
+        <li>
+          <strong>Monitor and Analyze Retry Metrics:</strong> Use logging and monitoring tools to detect abnormal retry
+          behavior, latency spikes, or error patterns that may indicate systemic issues.
+        </li>
+        <li>
+          <strong>Coordinate Between Teams:</strong> Ensure client and server teams collaborate closely to maintain
+          consistent retry behaviors and shared understanding of idempotency guarantees.
+        </li>
+        <li>
+          <strong>Educate Developers:</strong> Promote best practices and train developers on the pitfalls of retries,
+          emphasizing the importance of safe retry logic.
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer
+    class="text-center text-sm text-gray-600 py-4 border-t border-gray-300 mt-10">
+    &copy; 2025 Made by <strong>CAMNV</strong>. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
